@@ -4,37 +4,34 @@
 body {
   font-family: var(--FONT-FAMILY);
 }
+
 .MainHeader {
-  background-image: url('../images/header_background.jpg');
+  background: linear-gradient(#0000008f, #0000008f), url('../images/header_background.jpg');
   background-repeat: no-repeat;
   background-size: 400%;
   background-position-x: 10%;
   background-position-y: 34%;
   height: 230px;
 }
-.LogoWraper {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-.ImgCenter {
-  display: flex;
-  justify-content: center;
-}
-.LogoTitle {
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 30px;
-  text-align: center;
-  color: #fff;
-  display: none;
-}
+
 .Navigation {
   padding: 40px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+.LogoWraper {
+  display: flex;
+}
+.ImgCenter {
+  display: flex;
+  justify-content: center;
+}
+.LogoTitle {
+  display: none;
+}
+
 .List {
   display: flex;
   gap: 40px;
@@ -43,28 +40,45 @@ body {
   margin-block-start: 0em;
   margin-block-end: 0em;
 }
-
-.List > li > a {
+.Link {
   text-decoration: none;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
+  line-height: 14.06px;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
-}
-.Current {
   position: relative;
 }
+.Link::after {
+  content: '';
+  background-color: #ff001b;
+
+  right: 0;
+  bottom: -4px;
+
+  height: 3px;
+  width: 0;
+
+  position: absolute;
+  transition: width 300ms, left 300ms;
+}
+.Link:hover::after {
+  width: 100%;
+  left: 0;
+}
+
 .Current::after {
   content: '';
   background-color: #ff001b;
   position: absolute;
   left: 0;
   bottom: -4px;
-  width: 72px;
+  width: 100%;
   height: 3px;
 }
+
 .ButtonsWrapper {
   display: flex;
   justify-content: center;
@@ -72,7 +86,6 @@ body {
   padding: 20px;
   margin-bottom: 42px;
 }
-
 .Buttons {
   background: transparent;
   color: #fff;
@@ -84,7 +97,7 @@ body {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.33333;
+  line-height: 16px;
   text-transform: uppercase;
   text-align: center;
   color: #fff;
@@ -95,7 +108,6 @@ body {
   box-shadow: 0px 8px 43px 0px #ff6b0199;
   cursor: pointer;
 }
-
 .SelectedButton {
   border-color: #ff6b01;
   background: #ff6b01;
@@ -112,9 +124,44 @@ body {
 }
 @media screen and (min-width: 375px) {
   .MainHeader {
-    background-size: 300%;
+    background-position: 0% 29%;
+    background-size: 142%;
+    height: 219px;
+  }
+  .Navigation {
+    padding: 40px 32px;
+  }
+  .LogoWraper {
+    gap: 10px;
   }
   .LogoTitle {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    color: #fff;
     display: inline;
+    line-height: 35.16px;
+  }
+  .ButtonsWrapper {
+    padding: 0;
+    gap: 32px;
+    margin-bottom: 60px;
+  }
+  .Buttons {
+    width: 152px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .MainHeader {
+    background-position: 0 35%;
+    background-size: cover;
+    height: 216px;
+  }
+  .ButtonsWrapper {
+    gap: 16px;
+  }
+  .Buttons {
+    width: 147px;
+    height: 42px;
   }
 }
