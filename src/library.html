@@ -3,18 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nagłówek strony</title>
+    <title>My library</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
     />
+    <link rel="shortcut icon" href="./images/favicon.ico" />
   </head>
-  <link rel="shortcut icon" href="./images/favicon.ico" />
   <body>
     <!-- W taki sposbu dodajemy fragmenty w główny HTML-plik strony. -->
-    <include src="./partials/example.html"></include>
-
+    <include src="./partials/library_header.html"></include>
+    <include src="./partials/library_main.html"></include>
     <!-- Skrypt jest na samym dole kodu. On juz ma w sobie podłączony SAAS plik. -->
-    <script src="./index.js" type="module"></script>
+    <script src="./library.js" type="module"></script>
   </body>
 </html>
