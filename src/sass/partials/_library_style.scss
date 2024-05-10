@@ -1,8 +1,14 @@
 :root {
   --FONT-FAMILY: 'Roboto', sans-serif;
+  --RED: #ff001b;
+  --ORANGE: #ff6b08;
+  --WHITE: #fff;
 }
 body {
   font-family: var(--FONT-FAMILY);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--WHITE);
 }
 
 .MainHeader {
@@ -42,18 +48,15 @@ body {
 }
 .Link {
   text-decoration: none;
-  font-family: 'Roboto', sans-serif;
-  font-weight: 500;
-  font-size: 12px;
   line-height: 14.06px;
   text-transform: uppercase;
   text-align: center;
-  color: #fff;
+  color: var(--WHITE);
   position: relative;
 }
 .Link::after {
   content: '';
-  background-color: #ff001b;
+  background-color: var(--RED);
 
   right: 0;
   bottom: -4px;
@@ -71,7 +74,7 @@ body {
 
 .Current::after {
   content: '';
-  background-color: #ff001b;
+  background-color: var(--RED);
   position: absolute;
   left: 0;
   bottom: -4px;
@@ -88,29 +91,25 @@ body {
 }
 .Buttons {
   background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
+  border: 1px solid var(--WHITE);
   border-radius: 5px;
   width: 129px;
   height: 44px;
 
-  font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
   text-transform: uppercase;
   text-align: center;
-  color: #fff;
+  color: var(--WHITE);
 }
 .Buttons:hover {
-  border-color: #ff6b01;
-  background: #ff6b01;
+  border-color: var(--ORANGE);
+  background: var(--ORANGE);
   box-shadow: 0px 8px 43px 0px #ff6b0199;
   cursor: pointer;
 }
 .SelectedButton {
-  border-color: #ff6b01;
-  background: #ff6b01;
+  border-color: var(--ORANGE);
+  background: var(--ORANGE);
   box-shadow: 0px 8px 43px 0px #ff6b0199;
 }
 
@@ -126,7 +125,6 @@ body {
 .Footer {
   background-color: #f7f7f7;
   color: #545454;
-  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: 400;
   line-height: 16.41px;
@@ -157,10 +155,9 @@ body {
     gap: 10px;
   }
   .LogoTitle {
-    font-family: 'Roboto', sans-serif;
     font-weight: 500;
     font-size: 30px;
-    color: #fff;
+    color: var(--WHITE);
     display: inline;
     line-height: 35.16px;
   }
