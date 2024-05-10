@@ -122,7 +122,29 @@ body {
   height: 438px;
   background-color: aliceblue;
 }
-@media screen and (min-width: 375px) {
+
+.Footer {
+  background-color: #f7f7f7;
+  color: #545454;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16.41px;
+  height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FooterText {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 236px;
+}
+
+@media screen and (min-width: 425px) {
   .MainHeader {
     background-position: 0% 29%;
     background-size: 142%;
@@ -150,8 +172,20 @@ body {
   .Buttons {
     width: 152px;
   }
+  .Footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 79px;
+  }
+  .FooterText {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+  }
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .MainHeader {
     background-position: 0 35%;
     background-size: cover;
@@ -163,5 +197,8 @@ body {
   .Buttons {
     width: 147px;
     height: 42px;
+  }
+  .Footer {
+    height: 77px;
   }
 }
