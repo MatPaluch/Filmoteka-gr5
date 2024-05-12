@@ -105,25 +105,41 @@ body {
   font-size: 16px;
 }
 
+<<<<<<< Updated upstream
 .SearchButton {
+=======
+.search-button {
+>>>>>>> Stashed changes
   border: none;
   background-color: transparent;
   color: var(--WHITE);
   cursor: pointer;
+<<<<<<< Updated upstream
+=======
+  font-size: 16px;
+  outline: none;
+>>>>>>> Stashed changes
 }
 .SearchIcon {
   margin-right: 5px;
   fill: var(--WHITE);
+<<<<<<< Updated upstream
   display: block;
   margin-left: auto;
   margin-right: auto;
+=======
+>>>>>>> Stashed changes
 }
 
 .SearchBorder {
   position: absolute;
   bottom: 0;
   left: 0;
+<<<<<<< Updated upstream
   width: calc(100% - 0px);
+=======
+  width: calc(100% - 7px);
+>>>>>>> Stashed changes
   height: 0.5px;
   background-color: var(--WHITE);
 }
