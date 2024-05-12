@@ -1,169 +1,157 @@
-/*global*/
+:root {
+  --FONT-FAMILY: 'Roboto', sans-serif;
+  --RED: #ff001b;
+  --WHITE: #fff;
+}
 * {
-    box-sizing: border-box;
-    margin: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: var(--FONT-FAMILY);
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--WHITE);
+}
+
+.SectionHeader {
+  background: url('../images/header-jpg.jpg');
+  background-repeat: no-repeat;
+  background-size: 400%;
+  background-position-x: 10%;
+  background-position-y: 34%;
+  height: 230px;
+  opacity: 0.9;
+}
+
+.Nav {
+  padding: 40px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.LogoHeader {
+  display: flex;
+}
+.LogoImage {
+  display: flex;
+  justify-content: center;
+}
+.LogoText {
+  display: none;
+}
+.UlNav {
+  display: flex;
+  gap: 40px;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.LiNav {
+  text-decoration: none;
+  line-height: 14.06px;
+  text-transform: uppercase;
+  text-align: center;
+  color: var(--WHITE);
+  position: relative;
+}
+.LiNav::after {
+  content: '';
+  background-color: var(--RED);
+
+  right: 0;
+  bottom: -4px;
+
+  height: 3px;
+  width: 0;
+
+  position: absolute;
+  transition: width 300ms, left 300ms;
+}
+.LiNav:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.Current::after {
+  content: '';
+  background-color: var(--RED);
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 3px;
+}
+
+.SearchForm {
+  display: flex;
+  align-items: center;
+  width: 280px;
+  height: 20px;
+  color: var(--WHITE);
+  position: relative;
+  margin: 0 auto;
+}
+
+.SearchInput {
+  flex-grow: 1;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  color: var(--WHITE);
+  outline: none;
+  font-size: 16px;
+}
+
+.SearchButton {
+  border: none;
+  background-color: transparent;
+  color: var(--WHITE);
+  cursor: pointer;
+}
+.SearchIcon {
+  margin-right: 5px;
+  fill: var(--WHITE);
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.SearchBorder {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: calc(100% - 0px);
+  height: 0.5px;
+  background-color: var(--WHITE);
+}
+
+@media screen and (min-width: 425px) {
+  .SectionHeader {
+    background-position: 0% 29%;
+    background-size: 100%;
+    height: 219px;
   }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-    background-color: var(--white-background-color);
-    margin: 0 auto;
+  .Nav {
+    padding: 40px 32px;
   }
-  
-  ul,
-  ol,
-  a {
-    list-style-type: none;
-    text-decoration: none;
-    margin: 0;
-    padding-left: 0;
-    font-style: normal;
+  .LogoHeader {
+    gap: 10px;
   }
-  
-  h1,
-  h2,
-  h3,
-  p,
-  ul {
-    margin: 0;
-  }
-  
-  img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
-  
-  button {
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-  }
-  
-  .icon-header {
-    display: inline-block;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
-    color: white;
-  }
-  .icon-film {
-    width: 24px;
-    height: 24px;
-    background-position: 0 0;
-  }
-  
-  .section-header {
-    padding: 40px 20px 182px;
-    background-image: url('../images/foto-header-mobile@1x.jpg');
-    width: 100%;
-    height: 230px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin: 0 auto;
-    position: fixed;
-    z-index: 1000;
-  }
-  
-  .logo-text-header {
+  .LogoText {
     font-weight: 500;
     font-size: 30px;
+    color: var(--WHITE);
+    display: inline;
     line-height: 35.16px;
-    color: white;
-    display: none;
   }
-  .navigation {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+@media screen and (min-width: 769px) {
+  .SectionHeader {
+    height: 216px;
+    background-position: 0% 29%;
+    background-size: 100%;
   }
-  .nav-header {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-  }
-  .text-header {
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 14.06px;
-    color: white;
-    transition-property: color;
-    transition-duration: 250ms;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    display: inline-block;
-    padding: 0 0 3px 0;
-  }
-  
-  .text-home::after {
-    content: '';
-    display: block;
-    background-color: #ff001b;
-    height: 4px;
-    border-radius: 2px;
-    position: absolute;
-    width: 100%;
-    bottom: -1px;
-    left: 0px;
-  }
-  .text-mylibrary::after {
-    content: '';
-    display: block;
-    background-color: #ff001b;
-    height: 3px;
-    border-radius: 2px;
-    position: absolute;
-    width: 100%;
-    bottom: -1px;
-    left: 0px;
-  }
-  
-  .search-container {
-    position: relative;
-    width: 100%;
-    max-width: 280px;
-    margin: 0 auto;
-    padding: 48px 0;
-  }
-  
-  .search-container input[type='text'] {
-    width: calc(100% - 40px);
-    padding: 10px;
-    border: none;
-    opacity: 0;
-  }
-  
-  .search-container button {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 40px;
-    height: 100%;
-    padding: 10px;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  @media screen and (min-width: 768px) {
-    .section-header {
-      background-image: url('../images/foto-header-tablet@1x.jpg');
-      height: 216px;
-      padding: 44px 32px 182px;
-    }
-    .logo-text-header {
-      display: inline-block;
-    }
-  }
-  @media screen and (min-width: 1200px) {
-    .section-header {
-      background-image: url('../images/foto-header-desktop@1x.jpg');
-      height: 216px;
-      padding: 44px 32px 182px;
-    }
-    .logo-text-header {
-      display: inline-block;
-    }
-  }
-  
+}
