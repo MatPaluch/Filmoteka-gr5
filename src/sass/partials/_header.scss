@@ -60,13 +60,10 @@ body {
 .LiNav::after {
   content: '';
   background-color: var(--RED);
-
   right: 0;
   bottom: -4px;
-
   height: 3px;
   width: 0;
-
   position: absolute;
   transition: width 300ms, left 300ms;
 }
