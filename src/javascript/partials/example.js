@@ -1,6 +1,7 @@
 console.log('hi');
 
 import axios from 'axios';
+import { createModalTemplate, openModal } from './modal.js';
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
@@ -91,5 +92,12 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
+  });
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      createModalTemplate();
+      openModal();
+    });
   });
 });
