@@ -1,4 +1,8 @@
 function createModalTemplate() {
+  const existingModal = document.querySelector('.modal');
+  if (existingModal) {
+    existingModal.parentNode.removeChild(existingModal);
+  }
   const modalContainer = document.createElement('div');
   modalContainer.classList.add('modal');
   modalContainer.innerHTML = `
@@ -15,8 +19,18 @@ function createModalTemplate() {
 
   const closeButton = modalContainer.querySelector('.close');
   closeButton.addEventListener('click', closeModal);
-}
+  modalContainer.addEventListener('click', event => {
+    if (event.target === modalContainer) {
+      closeModal();
+    }
+  });
 
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeModal();
+    }
+  });
+}
 function openModal() {
   const modalContainer = document.querySelector('.modal');
   modalContainer.style.display = 'block';
