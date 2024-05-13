@@ -7,11 +7,11 @@ function createModalTemplate() {
   modalContainer.classList.add('modal');
   modalContainer.innerHTML = `
     <div class="modal-content">
-      <span class="close">&times;</span>
+      <span class="close">x</span>
       <div id="movieDetails"></div>
       <div class="modal-buttons">
-        <button id="addToWatchedBtn">Add to Watched</button>
-        <button id="addToQueueBtn">Add to Queue</button>
+        <button class="watched"id="addToWatchedBtn">Add to Watched</button>
+        <button class="queue" id="addToQueueBtn">Add to Queue</button>
       </div>
     </div>
   `;
