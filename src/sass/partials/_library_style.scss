@@ -122,24 +122,27 @@ body {
   background-color: aliceblue;
 }
 
-.Footer {
+.footer {
   background-color: #f7f7f7;
-  color: #545454;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16.41px;
-  height: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  text-align: center;
+  min-width: 320px;
+  padding-top: 29px;
+  padding-bottom: 30px;
 }
-.FooterText {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-  width: 236px;
+
+.footer-text {
+  color: #545454;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  font-size: 14px;
+  line-height: 1.172;
+}
+
+.textfirst {
+  display: block;
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 425px) {
@@ -169,17 +172,9 @@ body {
   .Buttons {
     width: 152px;
   }
-  .Footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 79px;
-  }
-  .FooterText {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 28px;
   }
 }
 @media screen and (min-width: 769px) {
@@ -195,7 +190,11 @@ body {
     width: 147px;
     height: 42px;
   }
-  .Footer {
-    height: 77px;
+  .footer-text {
+    font-size: 16px;
+    line-height: 1.171;
+  }
+  .textfirst {
+    display: inline-block;
   }
 }
