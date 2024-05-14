@@ -59,10 +59,10 @@ function openModal(selectedMovie) {
   additionalInfo.classList.add('modal-additional-Info');
 
   const dataPairs = [
-    { label: 'Vote/Votes', value: `1 / 2` },
-    { label: 'Popularity', value: '1000' },
-    { label: 'Original Title', value: 'Tytuł' },
-    { label: 'Genre', value: '???' },
+    { label: 'Vote/Votes', value: `${selectedMovie.voteAverage} / ${selectedMovie.voteCount}` },
+    { label: 'Popularity', value: selectedMovie.popularity },
+    { label: 'Original Title', value: selectedMovie.originalTitle },
+    { label: 'Genre', value: selectedMovie.genre },
   ];
 
   dataPairs.forEach(pair => {
@@ -78,7 +78,7 @@ function openModal(selectedMovie) {
   aboutSectionTextHead.innerHTML = `About`;
   const aboutSectionText = document.createElement('p');
   aboutSectionText.classList.add('modal-overview-text');
-  aboutSectionText.innerHTML = `costam cos tam`;
+  aboutSectionText.innerHTML = selectedMovie.overview;
 
   movieDetails.appendChild(movieImage);
   movieDetails.appendChild(title);

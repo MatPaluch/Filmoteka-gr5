@@ -57,6 +57,11 @@ async function fetchMove() {
         basicImage + element['poster_path'],
         element['release_date'].substring(0, 4),
         changeValue(element['genre_ids']),
+        element['original_title'],
+        element['overview'],
+        element['popularity'],
+        element['vote_average'],
+        element['vote_count'],
       ];
 
       array.push(obj);
@@ -67,7 +72,6 @@ async function fetchMove() {
     return [];
   }
 }
-
 fetchMove().then(result => {
   console.log(result);
   result.forEach(element => {
@@ -92,15 +96,18 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
-  });
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
+
     card.addEventListener('click', () => {
       const selectedMovie = {
-        title: card.querySelector('h1').textContent,
-        image: card.querySelector('img').src,
-        genre: card.querySelector('p').textContent,
-        year: card.querySelector('p:nth-child(2)').textContent,
+        title: element.key,
+        image: Object.values(element)[1][0],
+        genre: Object.values(element)[1][2],
+        year: Object.values(element)[1][1],
+        originalTitle: Object.values(element)[1][3],
+        overview: Object.values(element)[1][4],
+        popularity: Object.values(element)[1][5],
+        voteAverage: Object.values(element)[1][6],
+        voteCount: Object.values(element)[1][7],
       };
       createModalTemplate();
       openModal(selectedMovie);

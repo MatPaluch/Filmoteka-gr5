@@ -1,6 +1,6 @@
-.modal-open {
-  overflow: hidden;
-}
+// .modal-open {
+//   overflow: hidden;
+// }
 
 .modal {
   display: none;
@@ -28,8 +28,8 @@
   transform: translate(-50%, -50%);
   background-color: #fefefe;
   padding: 20px;
-  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-height: 98vh;
 }
 
 .close {
@@ -86,7 +86,6 @@
 .modal-movie-image {
   border-radius: 5px;
   width: 240px;
-  height: 357px;
 }
 
 .modal-movie-title {
@@ -94,11 +93,6 @@
 }
 
 .modal-movie-original-title {
-  line-height: 133%;
-  color: #000;
-}
-
-.modal-movie-genre {
   line-height: 133%;
   color: #000;
 }
@@ -114,16 +108,20 @@
   justify-content: space-between;
   gap: 20px;
 }
-.additionalInfo {
+.modal-additional-Info {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  gap: 20px;
+  gap: 8px;
+  flex-direction: column;
+}
+.modal-row-wrapper {
+  display: flex;
+  color: black;
 }
 .modal-data-name-wrapper {
   color: grey;
   display: flex;
-  flex: none;
+  flex: 1;
 }
 .modal-data-wrapper {
   color: black;
@@ -148,8 +146,6 @@
   }
   .movieDetailsWrapper {
     margin-top: 20px;
-    display: grid;
-    grid-template-columns: auto 1fr;
   }
 }
 
