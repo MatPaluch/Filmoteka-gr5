@@ -96,8 +96,14 @@ fetchMove().then(result => {
   const cards = document.querySelectorAll('.card');
   cards.forEach(card => {
     card.addEventListener('click', () => {
+      const selectedMovie = {
+        title: card.querySelector('h1').textContent,
+        image: card.querySelector('img').src,
+        genre: card.querySelector('p').textContent,
+        year: card.querySelector('p:nth-child(2)').textContent,
+      };
       createModalTemplate();
-      openModal();
+      openModal(selectedMovie);
     });
   });
 });
