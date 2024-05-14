@@ -54,7 +54,8 @@
   width: 110px;
   height: 44px;
 }
-.watched {
+.modal-buttons .watched {
+  border: none;
   background: #ff6b01;
   color: #fff;
   line-height: 1.33;
@@ -77,10 +78,9 @@
 .queue:hover {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
-.modal-content,
-.modal-content * {
+.modal-content {
   user-select: none;
-  max-width: 280px;
+  width: 280px;
 }
 
 .modal-movie-image {
@@ -113,4 +113,45 @@
   margin-top: 28px;
   justify-content: space-between;
   gap: 20px;
+}
+.additionalInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+.modal-data-name-wrapper {
+  color: grey;
+  display: flex;
+  flex: none;
+}
+.modal-data-wrapper {
+  color: black;
+  display: flex;
+  flex: auto;
+}
+
+.modal-overview-text {
+  color: black;
+}
+.modal-overview-text-Head {
+  color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-content {
+    width: 702px;
+  }
+  .modal-movie-image {
+    width: 264px;
+    height: auto;
+  }
+  .movieDetailsWrapper {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+  }
+}
+
+@media screen and (min-width: 1280px) {
 }

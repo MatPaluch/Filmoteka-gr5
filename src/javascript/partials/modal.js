@@ -20,7 +20,7 @@ function createModalTemplate() {
         <button class="watched"id="addToWatchedBtn">Add to Watched</button>
 
         <button class="queue" id="addToQueueBtn">Add to Queue</button>
-        
+
       </div>
     </div>
   `;
@@ -55,23 +55,39 @@ function openModal(selectedMovie) {
   title.textContent = selectedMovie.title;
   title.classList.add('modal-movie-title');
 
-  // const originalTitle = document.createElement('p');
-  // originalTitle.textContent = `Original Title: ${selectedMovie.originalTitle}`;
-  // originalTitle.classList.add('modal-movie-original-title');
+  const additionalInfo = document.createElement('div');
+  additionalInfo.classList.add('modal-additional-Info');
 
-  const genre = document.createElement('p');
-  genre.textContent = `Genre: ${selectedMovie.genre}`;
-  genre.classList.add('modal-movie-genre');
+  const dataPairs = [
+    { label: 'Vote/Votes', value: `1 / 2` },
+    { label: 'Popularity', value: '1000' },
+    { label: 'Original Title', value: 'Tytuł' },
+    { label: 'Genre', value: '???' },
+  ];
 
-  // const about = document.createElement('p');
-  // about.textContent = `About: ${selectedMovie.about}`;
-  // about.classList.add('modal-movie-about');
+  dataPairs.forEach(pair => {
+    const paragraph = document.createElement('p');
+    paragraph.classList.add('modal-row-wrapper');
+    paragraph.innerHTML = `<span class="modal-data-name-wrapper">${pair.label}</span>: <span class="modal-data-wrapper">${pair.value}</span>`;
+    additionalInfo.appendChild(paragraph);
+  });
+  const aboutSection = document.createElement('div');
+  aboutSection.classList.add('modal-overview');
+  const aboutSectionTextHead = document.createElement('p');
+  aboutSectionTextHead.classList.add('modal-overview-text-Head');
+  aboutSectionTextHead.innerHTML = `About`;
+  const aboutSectionText = document.createElement('p');
+  aboutSectionText.classList.add('modal-overview-text');
+  aboutSectionText.innerHTML = `costam cos tam`;
 
   movieDetails.appendChild(movieImage);
   movieDetails.appendChild(title);
-  // movieDetails.appendChild(originalTitle);
-  movieDetails.appendChild(genre);
-  // movieDetails.appendChild(about);
+  movieDetails.appendChild(additionalInfo);
+  aboutSection.appendChild(aboutSectionTextHead);
+  aboutSection.appendChild(aboutSectionText);
+
+  movieDetails.appendChild(aboutSection);
+
   modalContainer.style.display = 'block';
 
   modalContainer.classList.add('show');
