@@ -1,0 +1,153 @@
+// .modal-open {
+//   overflow: hidden;
+// }
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation: fadeIn 0.3s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.modal-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fefefe;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  max-height: 98vh;
+}
+
+.close {
+  color: black;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #555;
+}
+
+.modal-buttons {
+  display: flex;
+}
+
+.modal-buttons button {
+  border: 1px solid #000;
+  border-radius: 5px;
+  width: 110px;
+  height: 44px;
+}
+.modal-buttons .watched {
+  border: none;
+  background: #ff6b01;
+  color: #fff;
+  line-height: 1.33;
+  text-transform: uppercase;
+  padding: 6px;
+  margin: 20px 10px 20px 0;
+}
+.queue {
+  color: #000;
+  line-height: 1.3;
+  text-transform: uppercase;
+  padding: 6px;
+  margin: 20px 0px 20px 10px;
+}
+.watched:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+  background: #f15500;
+}
+
+.queue:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
+}
+.modal-content {
+  user-select: none;
+  width: 280px;
+}
+
+.modal-movie-image {
+  border-radius: 5px;
+  width: 240px;
+}
+
+.modal-movie-title {
+  color: #000;
+}
+
+.modal-movie-original-title {
+  line-height: 133%;
+  color: #000;
+}
+
+.modal-movie-about {
+  line-height: 167%;
+  color: #000;
+}
+.movieDetailsWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 28px;
+  justify-content: space-between;
+  gap: 20px;
+}
+.modal-additional-Info {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  flex-direction: column;
+}
+.modal-row-wrapper {
+  display: flex;
+  color: black;
+}
+.modal-data-name-wrapper {
+  color: grey;
+  display: flex;
+  flex: 1;
+}
+.modal-data-wrapper {
+  color: black;
+  display: flex;
+  flex: auto;
+}
+
+.modal-overview-text {
+  color: black;
+}
+.modal-overview-text-Head {
+  color: black;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-content {
+    width: 702px;
+  }
+  .modal-movie-image {
+    width: 264px;
+    height: auto;
+  }
+  .movieDetailsWrapper {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+}

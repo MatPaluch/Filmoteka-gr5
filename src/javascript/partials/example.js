@@ -1,6 +1,7 @@
 console.log('hi');
 
 import axios from 'axios';
+import { createModalTemplate, openModal } from './modal.js';
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
@@ -56,6 +57,11 @@ async function fetchMove() {
         basicImage + element['poster_path'],
         element['release_date'].substring(0, 4),
         changeValue(element['genre_ids']),
+        element['original_title'],
+        element['overview'],
+        element['popularity'],
+        element['vote_average'],
+        element['vote_count'],
       ];
 
       array.push(obj);
@@ -66,7 +72,6 @@ async function fetchMove() {
     return [];
   }
 }
-
 fetchMove().then(result => {
   console.log(result);
   result.forEach(element => {
@@ -91,5 +96,21 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
+
+    card.addEventListener('click', () => {
+      const selectedMovie = {
+        title: element.key,
+        image: Object.values(element)[1][0],
+        genre: Object.values(element)[1][2],
+        year: Object.values(element)[1][1],
+        originalTitle: Object.values(element)[1][3],
+        overview: Object.values(element)[1][4],
+        popularity: Object.values(element)[1][5],
+        voteAverage: Object.values(element)[1][6],
+        voteCount: Object.values(element)[1][7],
+      };
+      createModalTemplate();
+      openModal(selectedMovie);
+    });
   });
 });
