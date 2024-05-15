@@ -16,13 +16,10 @@ body {
 }
 
 .SectionHeader {
-  background: url('../images/header-jpg.jpg');
+  background-image: url('../images/mobile.jpg');
   background-repeat: no-repeat;
-  background-size: 400%;
-  background-position-x: 10%;
-  background-position-y: 34%;
+  background-size: cover;
   height: 230px;
-  opacity: 0.9;
 }
 
 .Nav {
@@ -124,11 +121,17 @@ body {
   height: 0.5px;
   background-color: var(--WHITE);
 }
-
+.SearchInput::placeholder {
+  color: var(--WHITE);
+  width: 96px;
+  height: 16px;
+}
+.SearchInput:focus::placeholder {
+  color: transparent;
+}
 @media screen and (min-width: 425px) {
   .SectionHeader {
-    background-position: 0% 29%;
-    background-size: 100%;
+    background-image: url('../images/tablet.jpg');
     height: 219px;
   }
   .Nav {
@@ -147,8 +150,7 @@ body {
 }
 @media screen and (min-width: 769px) {
   .SectionHeader {
+    background-image: url('../images/desktop.jpg');
     height: 216px;
-    background-position: 0% 29%;
-    background-size: 100%;
   }
 }
