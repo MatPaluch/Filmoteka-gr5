@@ -20,6 +20,13 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 230px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000; /* Ustawiamy z-index, aby nagłówek był zawsze na wierzchu */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
 }
 
 .Nav {
