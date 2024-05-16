@@ -1,1 +1,1 @@
-import './partials/example';
+import './partials/home';
