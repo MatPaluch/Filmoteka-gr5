@@ -1,2 +1,1 @@
-import './partials/example';
-import './partials/modal';
+import './partials/home';
