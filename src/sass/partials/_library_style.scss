@@ -32,7 +32,7 @@ body {
 }
 .ImgCenter {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 .LogoTitle {
   display: none;
@@ -122,26 +122,6 @@ body {
   background-color: aliceblue;
 }
 
-.Footer {
-  background-color: #f7f7f7;
-  color: #545454;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 16.41px;
-  height: 100px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.FooterText {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 5px;
-  width: 236px;
-}
-
 @media screen and (min-width: 425px) {
   .MainHeader {
     background-position: 0% 29%;
@@ -169,24 +149,16 @@ body {
   .Buttons {
     width: 152px;
   }
-  .Footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 79px;
-  }
-  .FooterText {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 100%;
+  .footer {
+    padding-top: 30px;
+    padding-bottom: 28px;
   }
 }
 @media screen and (min-width: 769px) {
   .MainHeader {
     background-position: 0 35%;
-    background-size: cover;
-    height: 216px;
+    background-position: 0% 29%;
+    background-size: 100%;
   }
   .ButtonsWrapper {
     gap: 16px;
@@ -195,7 +167,11 @@ body {
     width: 147px;
     height: 42px;
   }
-  .Footer {
-    height: 77px;
+  .footer-text {
+    font-size: 16px;
+    line-height: 1.171;
+  }
+  .textfirst {
+    display: inline-block;
   }
 }
