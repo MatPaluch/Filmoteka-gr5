@@ -51,6 +51,9 @@ function openModal(selectedMovie) {
   movieImage.alt = selectedMovie.title;
   movieImage.classList.add('modal-movie-image');
 
+  const detailsContainer = document.createElement('div');
+  detailsContainer.classList.add('modal-details-container');
+
   const title = document.createElement('h2');
   title.textContent = selectedMovie.title;
   title.classList.add('modal-movie-title');
@@ -58,8 +61,16 @@ function openModal(selectedMovie) {
   const additionalInfo = document.createElement('div');
   additionalInfo.classList.add('modal-additional-Info');
 
+  const voteAverageSpan = document.createElement('span');
+  voteAverageSpan.textContent = selectedMovie.voteAverage.toFixed(1);
+  voteAverageSpan.classList.add('modal-vote-average');
+
+  const voteCountSpan = document.createElement('span');
+  voteCountSpan.textContent = selectedMovie.voteCount;
+  voteCountSpan.classList.add('modal-vote-count');
+
   const dataPairs = [
-    { label: 'Vote/Votes', value: `${selectedMovie.voteAverage} / ${selectedMovie.voteCount}` },
+    { label: 'Vote/Votes', value: `${voteAverageSpan.outerHTML} / ${voteCountSpan.outerHTML}` },
     { label: 'Popularity', value: selectedMovie.popularity },
     { label: 'Original Title', value: selectedMovie.originalTitle },
     { label: 'Genre', value: selectedMovie.genre },
@@ -68,7 +79,7 @@ function openModal(selectedMovie) {
   dataPairs.forEach(pair => {
     const paragraph = document.createElement('p');
     paragraph.classList.add('modal-row-wrapper');
-    paragraph.innerHTML = `<span class="modal-data-name-wrapper">${pair.label}</span>: <span class="modal-data-wrapper">${pair.value}</span>`;
+    paragraph.innerHTML = `<div class="modal-data-name-wrapper">${pair.label}</div><div class="modal-data-wrapper">${pair.value}</div>`;
     additionalInfo.appendChild(paragraph);
   });
   const aboutSection = document.createElement('div');
@@ -81,12 +92,13 @@ function openModal(selectedMovie) {
   aboutSectionText.innerHTML = selectedMovie.overview;
 
   movieDetails.appendChild(movieImage);
-  movieDetails.appendChild(title);
-  movieDetails.appendChild(additionalInfo);
+  detailsContainer.appendChild(title);
+  detailsContainer.appendChild(additionalInfo);
+  detailsContainer.appendChild(aboutSection);
   aboutSection.appendChild(aboutSectionTextHead);
   aboutSection.appendChild(aboutSectionText);
 
-  movieDetails.appendChild(aboutSection);
+  movieDetails.appendChild(detailsContainer);
 
   modalContainer.style.display = 'block';
 
