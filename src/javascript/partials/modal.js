@@ -7,20 +7,14 @@ function createModalTemplate() {
   modalContainer.classList.add('modal');
   modalContainer.innerHTML = `
     <div class="modal-content">
-
       <span class="close">&nbsp;<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path id="Vector 1" d="M8 8L22 22" stroke="black" stroke-width="2"/>
 <path id="Vector 2" d="M8 22L22 8" stroke="black" stroke-width="2"/>
 </svg>&nbsp;</span>
-
       <div id="movieDetails" class="movieDetailsWrapper"></div>
-
       <div class="modal-buttons">
-
-        <button class="watched"id="addToWatchedBtn">Add to Watched</button>
-
+        <button class="watched" id="addToWatchedBtn">Add to Watched</button>
         <button class="queue" id="addToQueueBtn">Add to Queue</button>
-
       </div>
     </div>
   `;
@@ -39,6 +33,20 @@ function createModalTemplate() {
       closeModal();
     }
   });
+
+  const addToWatchedBtn = modalContainer.querySelector('#addToWatchedBtn');
+  const addToQueueBtn = modalContainer.querySelector('#addToQueueBtn');
+
+  addToWatchedBtn.addEventListener('click', () =>
+    addToLocalStorage('watchedMovies', selectedMovie),
+  );
+  addToQueueBtn.addEventListener('click', () => addToLocalStorage('queueMovies', selectedMovie));
+}
+
+function addToLocalStorage(key, movie) {
+  let movies = JSON.parse(localStorage.getItem(key)) || [];
+  movies.push(movie);
+  localStorage.setItem(key, JSON.stringify(movies));
 }
 function openModal(selectedMovie) {
   const modalContainer = document.querySelector('.modal');
@@ -51,9 +59,6 @@ function openModal(selectedMovie) {
   movieImage.alt = selectedMovie.title;
   movieImage.classList.add('modal-movie-image');
 
-  const detailsContainer = document.createElement('div');
-  detailsContainer.classList.add('modal-details-container');
-
   const title = document.createElement('h2');
   title.textContent = selectedMovie.title;
   title.classList.add('modal-movie-title');
@@ -61,16 +66,8 @@ function openModal(selectedMovie) {
   const additionalInfo = document.createElement('div');
   additionalInfo.classList.add('modal-additional-Info');
 
-  const voteAverageSpan = document.createElement('span');
-  voteAverageSpan.textContent = selectedMovie.voteAverage.toFixed(1);
-  voteAverageSpan.classList.add('modal-vote-average');
-
-  const voteCountSpan = document.createElement('span');
-  voteCountSpan.textContent = selectedMovie.voteCount;
-  voteCountSpan.classList.add('modal-vote-count');
-
   const dataPairs = [
-    { label: 'Vote/Votes', value: `${voteAverageSpan.outerHTML} / ${voteCountSpan.outerHTML}` },
+    { label: 'Vote/Votes', value: `${selectedMovie.voteAverage} / ${selectedMovie.voteCount}` },
     { label: 'Popularity', value: selectedMovie.popularity },
     { label: 'Original Title', value: selectedMovie.originalTitle },
     { label: 'Genre', value: selectedMovie.genre },
@@ -79,7 +76,7 @@ function openModal(selectedMovie) {
   dataPairs.forEach(pair => {
     const paragraph = document.createElement('p');
     paragraph.classList.add('modal-row-wrapper');
-    paragraph.innerHTML = `<div class="modal-data-name-wrapper">${pair.label}</div><div class="modal-data-wrapper">${pair.value}</div>`;
+    paragraph.innerHTML = `<span class="modal-data-name-wrapper">${pair.label}</span>: <span class="modal-data-wrapper">${pair.value}</span>`;
     additionalInfo.appendChild(paragraph);
   });
   const aboutSection = document.createElement('div');
@@ -92,18 +89,22 @@ function openModal(selectedMovie) {
   aboutSectionText.innerHTML = selectedMovie.overview;
 
   movieDetails.appendChild(movieImage);
-  detailsContainer.appendChild(title);
-  detailsContainer.appendChild(additionalInfo);
-  detailsContainer.appendChild(aboutSection);
+  movieDetails.appendChild(title);
+  movieDetails.appendChild(additionalInfo);
   aboutSection.appendChild(aboutSectionTextHead);
   aboutSection.appendChild(aboutSectionText);
 
-  movieDetails.appendChild(detailsContainer);
+  movieDetails.appendChild(aboutSection);
 
   modalContainer.style.display = 'block';
 
   modalContainer.classList.add('show');
   document.body.classList.add('modal-open');
+  const addToWatchedBtn = document.getElementById('addToWatchedBtn');
+  const addToQueueBtn = document.getElementById('addToQueueBtn');
+
+  addToWatchedBtn.onclick = () => addToLocalStorage('watchedMovies', selectedMovie);
+  addToQueueBtn.onclick = () => addToLocalStorage('queueMovies', selectedMovie);
 }
 
 function closeModal() {
