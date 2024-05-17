@@ -7,20 +7,14 @@ function createModalTemplate() {
   modalContainer.classList.add('modal');
   modalContainer.innerHTML = `
     <div class="modal-content">
-
       <span class="close">&nbsp;<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path id="Vector 1" d="M8 8L22 22" stroke="black" stroke-width="2"/>
 <path id="Vector 2" d="M8 22L22 8" stroke="black" stroke-width="2"/>
 </svg>&nbsp;</span>
-
       <div id="movieDetails" class="movieDetailsWrapper"></div>
-
       <div class="modal-buttons">
-
-        <button class="watched"id="addToWatchedBtn">Add to Watched</button>
-
+        <button class="watched" id="addToWatchedBtn">Add to Watched</button>
         <button class="queue" id="addToQueueBtn">Add to Queue</button>
-
       </div>
     </div>
   `;
@@ -39,6 +33,20 @@ function createModalTemplate() {
       closeModal();
     }
   });
+
+  const addToWatchedBtn = modalContainer.querySelector('#addToWatchedBtn');
+  const addToQueueBtn = modalContainer.querySelector('#addToQueueBtn');
+
+  addToWatchedBtn.addEventListener('click', () =>
+    addToLocalStorage('watchedMovies', selectedMovie),
+  );
+  addToQueueBtn.addEventListener('click', () => addToLocalStorage('queueMovies', selectedMovie));
+}
+
+function addToLocalStorage(key, movie) {
+  let movies = JSON.parse(localStorage.getItem(key)) || [];
+  movies.push(movie);
+  localStorage.setItem(key, JSON.stringify(movies));
 }
 function openModal(selectedMovie) {
   const modalContainer = document.querySelector('.modal');
@@ -92,6 +100,11 @@ function openModal(selectedMovie) {
 
   modalContainer.classList.add('show');
   document.body.classList.add('modal-open');
+  const addToWatchedBtn = document.getElementById('addToWatchedBtn');
+  const addToQueueBtn = document.getElementById('addToQueueBtn');
+
+  addToWatchedBtn.onclick = () => addToLocalStorage('watchedMovies', selectedMovie);
+  addToQueueBtn.onclick = () => addToLocalStorage('queueMovies', selectedMovie);
 }
 
 function closeModal() {
