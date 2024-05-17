@@ -22,6 +22,8 @@
   }
 }
 .modal-content {
+  user-select: none;
+  width: 280px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -33,7 +35,6 @@
 }
 
 .close {
-  color: black;
   position: absolute;
   top: 8px;
   right: 8px;
@@ -78,18 +79,14 @@
 .queue:hover {
   box-shadow: 4px 4px 4px 0 rgba(0, 0, 0, 0.25);
 }
-.modal-content {
-  user-select: none;
-  width: 280px;
-}
-
 .modal-movie-image {
   border-radius: 5px;
-  width: 240px;
 }
 
 .modal-movie-title {
-  color: #000;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  line-height: 23px;
 }
 
 .modal-movie-original-title {
@@ -98,8 +95,13 @@
 }
 
 .modal-movie-about {
-  line-height: 167%;
+  line-height: 1.67;
   color: #000;
+}
+.modal-details-container {
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .movieDetailsWrapper {
   display: flex;
@@ -114,26 +116,65 @@
   gap: 8px;
   flex-direction: column;
 }
+.modal-additional-Info .modal-row-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-additional-Info .modal-row-wrapper .modal-data-name-wrapper,
+.modal-additional-Info .modal-row-wrapper .modal-data-wrapper {
+  flex: 1;
+}
 .modal-row-wrapper {
   display: flex;
   color: black;
 }
 .modal-data-name-wrapper {
-  color: grey;
+  color: rgb(140, 140, 140);
   display: flex;
   flex: 1;
+  line-height: 16px;
 }
 .modal-data-wrapper {
+  color: rgb(140, 140, 140);
   color: black;
   display: flex;
   flex: auto;
 }
+.modal-additional-Info .modal-data-name-wrapper,
+.modal-additional-Info .modal-data-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.modal-vote-average {
+  margin-right: 3px;
+  border-radius: 5px;
+  padding: 1px 9px;
+  background: rgb(255, 107, 1);
+  color: rgb(255, 255, 255);
+}
+.modal-vote-count {
+  border-radius: 5px;
+  padding: 1px 9px;
+  background: rgb(247, 247, 247);
+  color: rgb(0, 0, 0);
+}
+
+.modal-overview {
+  color: rgb(0, 0, 0);
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
 
 .modal-overview-text {
-  color: black;
+  line-height: 20px;
 }
 .modal-overview-text-Head {
-  color: black;
+  line-height: 16px;
+  text-transform: uppercase;
 }
 
 @media screen and (min-width: 768px) {

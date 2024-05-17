@@ -69,11 +69,14 @@ function openModal(selectedMovie) {
   voteCountSpan.textContent = selectedMovie.voteCount;
   voteCountSpan.classList.add('modal-vote-count');
 
+  const genre = selectedMovie.genre.length > 0 ? selectedMovie.genre[0] : '';
+  const popularity = selectedMovie.popularity.toFixed(1);
+
   const dataPairs = [
     { label: 'Vote/Votes', value: `${voteAverageSpan.outerHTML} / ${voteCountSpan.outerHTML}` },
-    { label: 'Popularity', value: selectedMovie.popularity },
+    { label: 'Popularity', value: popularity },
     { label: 'Original Title', value: selectedMovie.originalTitle },
-    { label: 'Genre', value: selectedMovie.genre },
+    { label: 'Genre', value: genre },
   ];
 
   dataPairs.forEach(pair => {
@@ -82,23 +85,27 @@ function openModal(selectedMovie) {
     paragraph.innerHTML = `<div class="modal-data-name-wrapper">${pair.label}</div><div class="modal-data-wrapper">${pair.value}</div>`;
     additionalInfo.appendChild(paragraph);
   });
-  const aboutSection = document.createElement('div');
-  aboutSection.classList.add('modal-overview');
-  const aboutSectionTextHead = document.createElement('p');
-  aboutSectionTextHead.classList.add('modal-overview-text-Head');
-  aboutSectionTextHead.innerHTML = `About`;
-  const aboutSectionText = document.createElement('p');
-  aboutSectionText.classList.add('modal-overview-text');
-  aboutSectionText.innerHTML = selectedMovie.overview;
-
   movieDetails.appendChild(movieImage);
   detailsContainer.appendChild(title);
   detailsContainer.appendChild(additionalInfo);
-  detailsContainer.appendChild(aboutSection);
-  aboutSection.appendChild(aboutSectionTextHead);
-  aboutSection.appendChild(aboutSectionText);
-
   movieDetails.appendChild(detailsContainer);
+
+  if (selectedMovie.overview.trim() !== '') {
+    const aboutSection = document.createElement('div');
+    aboutSection.classList.add('modal-overview');
+
+    const aboutSectionTextHead = document.createElement('p');
+    aboutSectionTextHead.classList.add('modal-overview-text-Head');
+    aboutSectionTextHead.innerHTML = `About`;
+
+    const aboutSectionText = document.createElement('p');
+    aboutSectionText.classList.add('modal-overview-text');
+    aboutSectionText.innerHTML = selectedMovie.overview;
+
+    aboutSection.appendChild(aboutSectionTextHead);
+    aboutSection.appendChild(aboutSectionText);
+    detailsContainer.appendChild(aboutSection);
+  }
 
   modalContainer.style.display = 'block';
 
