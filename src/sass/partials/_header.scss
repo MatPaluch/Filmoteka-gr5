@@ -20,6 +20,12 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 230px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  z-index: 1000; 
 }
 
 .Nav {
@@ -33,7 +39,7 @@ body {
 }
 .LogoImage {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 .LogoText {
   display: none;
@@ -129,7 +135,7 @@ body {
 .SearchInput:focus::placeholder {
   color: transparent;
 }
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 591px) {
   .SectionHeader {
     background-image: url('../images/tablet.jpg');
     height: 219px;
@@ -148,7 +154,7 @@ body {
     line-height: 35.16px;
   }
 }
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1071px) {
   .SectionHeader {
     background-image: url('../images/desktop.jpg');
     height: 216px;

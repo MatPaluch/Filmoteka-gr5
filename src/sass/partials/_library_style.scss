@@ -32,7 +32,7 @@ body {
 }
 .ImgCenter {
   display: flex;
-  justify-content: center;
+  align-items: center;
 }
 .LogoTitle {
   display: none;
@@ -120,29 +120,6 @@ body {
   width: 280px;
   height: 438px;
   background-color: aliceblue;
-}
-
-.footer {
-  background-color: #f7f7f7;
-  text-align: center;
-  min-width: 320px;
-  padding-top: 29px;
-  padding-bottom: 30px;
-}
-
-.footer-text {
-  color: #545454;
-  font-family: Roboto, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  font-size: 14px;
-  line-height: 1.172;
-}
-
-.textfirst {
-  display: block;
-  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 425px) {

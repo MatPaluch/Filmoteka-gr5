@@ -1,5 +1,3 @@
-console.log('hi');
-
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
 
