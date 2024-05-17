@@ -15,13 +15,6 @@ function createModalTemplate() {
 
       <div id="movieDetails" class="movieDetailsWrapper"></div>
 
-      <div class="modal-buttons">
-
-        <button class="watched"id="addToWatchedBtn">Add to Watched</button>
-
-        <button class="queue" id="addToQueueBtn">Add to Queue</button>
-
-      </div>
     </div>
   `;
   document.body.appendChild(modalContainer);
@@ -85,6 +78,22 @@ function openModal(selectedMovie) {
     paragraph.innerHTML = `<div class="modal-data-name-wrapper">${pair.label}</div><div class="modal-data-wrapper">${pair.value}</div>`;
     additionalInfo.appendChild(paragraph);
   });
+  const buttonContainer = document.createElement('div');
+  buttonContainer.classList.add('modal-buttons');
+
+  const watchedButton = document.createElement('button');
+  watchedButton.classList.add('watched');
+  watchedButton.id = 'addtToWatchedBtn';
+  watchedButton.textContent = 'Add to Watched';
+
+  const queueButton = document.createElement('button');
+  queueButton.classList.add('queue');
+  queueButton.id = 'addToQueueBtn';
+  queueButton.textContent = 'Add to queue';
+
+  buttonContainer.appendChild(watchedButton);
+  buttonContainer.appendChild(queueButton);
+
   movieDetails.appendChild(movieImage);
   detailsContainer.appendChild(title);
   detailsContainer.appendChild(additionalInfo);
@@ -105,6 +114,7 @@ function openModal(selectedMovie) {
     aboutSection.appendChild(aboutSectionTextHead);
     aboutSection.appendChild(aboutSectionText);
     detailsContainer.appendChild(aboutSection);
+    detailsContainer.appendChild(buttonContainer);
   }
 
   modalContainer.style.display = 'block';
