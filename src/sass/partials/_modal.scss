@@ -139,6 +139,7 @@
   color: rgb(140, 140, 140);
   color: black;
   flex: auto;
+  line-height: 16px;
 }
 .modal-additional-Info .modal-data-name-wrapper,
 .modal-additional-Info .modal-data-wrapper {
@@ -181,12 +182,53 @@
   }
   .modal-movie-image {
     width: 264px;
-    height: auto;
+    height: fit-content;
   }
   .movieDetailsWrapper {
     margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 68px;
+    justify-content: normal;
+  }
+  .modal-details-container {
+    width: 264px;
+  }
+  .modal-buttons button {
+    width: 125px;
   }
 }
 
-@media screen and (min-width: 1280px) {
+@media screen and (min-width: 1024px) {
+  .modal-content {
+    width: 806px;
+  }
+  .modal-movie-image {
+    width: 375px;
+    height: fit-content;
+  }
+  .modal-movie-title {
+    font-size: 30px;
+    line-height: 35px;
+  }
+  .movieDetailsWrapper {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: normal;
+  }
+  .modal-details-container {
+    width: 391px;
+  }
+  .modal-buttons button {
+    width: 125px;
+  }
+  .modal-buttons .watched {
+    margin-left: 5px;
+    margin-right: 15px;
+  }
+  .modal-buttons {
+    justify-content: start;
+  }
 }

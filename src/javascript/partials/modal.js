@@ -7,14 +7,11 @@ function createModalTemplate() {
   modalContainer.classList.add('modal');
   modalContainer.innerHTML = `
     <div class="modal-content">
-
       <span class="close">&nbsp;<svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path id="Vector 1" d="M8 8L22 22" stroke="black" stroke-width="2"/>
 <path id="Vector 2" d="M8 22L22 8" stroke="black" stroke-width="2"/>
 </svg>&nbsp;</span>
-
       <div id="movieDetails" class="movieDetailsWrapper"></div>
-
     </div>
   `;
   document.body.appendChild(modalContainer);
