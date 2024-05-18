@@ -1,0 +1,2 @@
+const t=document.querySelector("[data-watched]"),e=document.querySelector("[data-queue]");t.addEventListener("click",c=>{t.classList.contains("SelectedButton")||(console.log(c.target),c.target.classList.add("SelectedButton"),e.classList.remove("SelectedButton"))}),e.addEventListener("click",c=>{e.classList.contains("SelectedButton")||(console.log(c.target),c.target.classList.add("SelectedButton"),t.classList.remove("SelectedButton"))});
+//# sourceMappingURL=library.c77b2b0b.js.map
