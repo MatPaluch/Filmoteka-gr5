@@ -59,14 +59,14 @@ function openModal(selectedMovie) {
   voteCountSpan.textContent = selectedMovie.voteCount;
   voteCountSpan.classList.add('modal-vote-count');
 
-  const genre = selectedMovie.genre.length > 0 ? selectedMovie.genre[0] : '';
-  const popularity = selectedMovie.popularity.toFixed(1);
+  // const genre = selectedMovie.genre.length > 0 ? selectedMovie.genre[0] : '';
+  const popularity = selectedMovie.popularity.toFixed(0);
 
   const dataPairs = [
     { label: 'Vote/Votes', value: `${voteAverageSpan.outerHTML} / ${voteCountSpan.outerHTML}` },
     { label: 'Popularity', value: popularity },
     { label: 'Original Title', value: selectedMovie.originalTitle },
-    { label: 'Genre', value: genre },
+    { label: 'Genre', value: selectedMovie.genre },
   ];
 
   dataPairs.forEach(pair => {

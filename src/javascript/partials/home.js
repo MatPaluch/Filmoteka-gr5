@@ -43,12 +43,9 @@ function changeValue(array) {
 
   array.map(element => {
     const value = keys.indexOf(element.toString());
-    if (value !== -1) {
-      response.push(values[value]);
-    }
+    response.push(values[value]);
   });
-
-  return response.slice(0, 3);
+  return response;
 }
 
 async function fetchMove() {
@@ -90,7 +87,7 @@ fetchMove().then(result => {
 
     img.src = Object.values(element)[1][0];
     title.textContent = element.key;
-    genre.textContent = Object.values(element)[1][2];
+    genre.textContent = Object.values(element)[1][2].slice(0, 3).join(', ');
     year.textContent = Object.values(element)[1][1];
 
     card.appendChild(img);
@@ -105,7 +102,7 @@ fetchMove().then(result => {
       const selectedMovie = {
         title: element.key,
         image: Object.values(element)[1][0],
-        genre: Object.values(element)[1][2],
+        genre: Object.values(element)[1][2].join(', '),
         year: Object.values(element)[1][1],
         originalTitle: Object.values(element)[1][3],
         overview: Object.values(element)[1][4],
