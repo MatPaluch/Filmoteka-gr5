@@ -43,9 +43,12 @@ function changeValue(array) {
 
   array.map(element => {
     const value = keys.indexOf(element.toString());
-    response.push(values[value]);
+    if (value !== -1) {
+      response.push(values[value]);
+    }
   });
-  return response;
+
+  return response.slice(0, 3);
 }
 
 async function fetchMove() {
@@ -57,7 +60,7 @@ async function fetchMove() {
       obj.value = [
         basicImage + element['poster_path'],
         element['release_date'].substring(0, 4),
-        changeValue(element['genre_ids'].slice(0, 3)),
+        changeValue(element['genre_ids']),
         element['original_title'],
         element['overview'],
         element['popularity'],
