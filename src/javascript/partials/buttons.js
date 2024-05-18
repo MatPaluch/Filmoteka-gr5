@@ -123,9 +123,14 @@ buttons.addEventListener('click', event => {
       return;
       }
       else if(element1.textContent === "2"){
-        values.map((element)=>{
-          element.textContent = parseInt(element.textContent) - 1;
-        }) 
+        if(element.textContent === ""){
+          element.textContent = "";
+        }
+        else{
+          values.map((element)=>{
+            element.textContent = parseInt(element.textContent) - 1;
+          }) 
+        }
       }
         else{
           values.map((element)=>{
@@ -164,10 +169,6 @@ buttons.addEventListener('click', event => {
   //przycisk 4
   else if(event.target === element4){
     fetchMove(parseInt(event.target.textContent)); 
-    if(element4.textContent === "4"){
-      return
-    }
-    else{
       values.map((element)=>{
         if(element.textContent === ""){
           element.textContent = "";
@@ -176,7 +177,7 @@ buttons.addEventListener('click', event => {
           element.textContent = parseInt(element.textContent) + 1;
         }
       }) 
-    }
+    
   }
   //przycisk 5
   else if(event.target === element5){
