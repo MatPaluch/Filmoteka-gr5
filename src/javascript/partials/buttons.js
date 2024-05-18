@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
-const url = 'https://api.themoviedb.org/3/discover/movie?api_key=b942b8bf626a04f48b07153a95ee51a0';
+const url = 'https://api.themoviedb.org/3/movie/popular?api_key=b942b8bf626a04f48b07153a95ee51a0';
 let array = [];
 let globalNumber = 1;
 const buttons = document.querySelector('.buttons');
@@ -94,63 +94,125 @@ fetchMove();
 
 buttons.addEventListener('click', event => {
   const values = Array.from(buttons.children);
-  const target = event.target.textContent;
-  const number = parseInt(target);
-  const firstChild = buttons.firstElementChild;
-  const lastChild = buttons.lastElementChild;
-  console.log(values[0]);
+  const element0 = values[0];
+  const element1 = values[1];
+  const element2 = values[2];
+  const element3 = values[3];
+  const element4 = values[4];
+  const element5 = values[5];
+  const element6 = values[6];
   container.innerHTML = '';
-
-  if (event.target === firstChild) {
-    const choosedNumber = parseInt(localStorage.getItem('globalNumber')) - 1;
-    localStorage.setItem('globalNumber', choosedNumber);
-    fetchMove(choosedNumber);
-  } else if (event.target === lastChild) {
-    const choosedNumber = parseInt(localStorage.getItem('globalNumber')) + 1;
-    localStorage.setItem('globalNumber', choosedNumber);
-    fetchMove(choosedNumber);
-  } else {
-    localStorage.setItem('globalNumber', number);
-    fetchMove(number);
+//Przycisk <-
+  if(event.target === element0){
+    if(element1.textContent !== "1"){
+      values.map((element)=>{
+        if(element.textContent === ""){
+          element.textContent = "";
+        }
+        else{
+          element.textContent = parseInt(element.textContent) - 1;
+        }
+      })
+    }
+    fetchMove(globalNumber - 1); 
   }
-
-  if (event.target === values[0] || event.target === values[2]) {
-    if (event.target.textContent !== '2') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
-          element.textContent = parseInt(element.textContent);
+  //przycisk 1
+  else if(event.target === element1){
+    fetchMove(parseInt(event.target.textContent)); 
+    if(element1.textContent === "1"){
+      return;
+      }
+      else if(element1.textContent === "2"){
+        values.map((element)=>{
+          element.textContent = parseInt(element.textContent) - 1;
+        }) 
+      }
+        else{
+          values.map((element)=>{
+            if(element.textContent === ""){
+              element.textContent = "";
+            }
+            else{
+              element.textContent = parseInt(element.textContent) - 2;
+            }
+            
+          })
         }
-      });
+  }
+  //przycisk 2
+  else if(event.target === element2){
+    fetchMove(parseInt(event.target.textContent)); 
+    if(element2.textContent === "2"){
+      return
     }
-  } else if (event.target === values[1]) {
-    if (event.target.textContent !== '1' || event.target.textContent !== '2') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
-          element.textContent = parseInt(element.textContent) - 2;
+    else{
+      values.map((element)=>{
+        if(element.textContent === ""){
+          element.textContent = "";
         }
-      });
+        else{
+          element.textContent = parseInt(element.textContent) - 1;
+        }
+      }) 
     }
-  } else if (event.target === values[4] || event.target === values[6]) {
-    if (event.target.textContent !== '19') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
+  }
+  //przycisk 3
+  else if(event.target === element3){
+    fetchMove(parseInt(event.target.textContent)); 
+    return;
+  }
+  //przycisk 4
+  else if(event.target === element4){
+    fetchMove(parseInt(event.target.textContent)); 
+    if(element4.textContent === "4"){
+      return
+    }
+    else{
+      values.map((element)=>{
+        if(element.textContent === ""){
+          element.textContent = "";
+        }
+        else{
           element.textContent = parseInt(element.textContent) + 1;
         }
-      });
+      }) 
     }
-  } else {
-    if (event.target.textContent !== '4') {
-      if (event.target.textContent !== '20') {
-        values.forEach(element => {
-          if (element === values[0] || element === values[6]) {
-          } else {
-            element.textContent = parseInt(element.textContent) + 2;
-          }
-        });
-      }
+  }
+  //przycisk 5
+  else if(event.target === element5){
+    fetchMove(parseInt(event.target.textContent)); 
+    if(element5.textContent === "20"){
+      return
     }
+    else if(element5.textContent === "19"){
+      values.map((element)=>{
+        element.textContent = parseInt(element.textContent) + 1;
+      }) 
+      fetchMove(parseInt(event.target.textContent)); 
+    }
+    else{
+      values.map((element)=>{
+        if(element.textContent === ""){
+          element.textContent = "";
+        }
+        else{
+          element.textContent = parseInt(element.textContent) + 2;
+        }
+      }) 
+    }
+  }
+  //przycisk ->
+  else if(event.target === element6){
+    if(element5.textContent !== "20"){
+      values.map((element)=>{
+        if(element.textContent === ""){
+          element.textContent = "";
+        }
+        else{
+          element.textContent = parseInt(element.textContent) + 1;
+        }
+      }) 
+    }
+    fetchMove(globalNumber+1); 
   }
 });
