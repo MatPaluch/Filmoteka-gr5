@@ -57,7 +57,7 @@ async function fetchMove() {
       obj.value = [
         basicImage + element['poster_path'],
         element['release_date'].substring(0, 4),
-        changeValue(element['genre_ids']),
+        changeValue(element['genre_ids'].slice(0, 3)),
         element['original_title'],
         element['overview'],
         element['popularity'],
