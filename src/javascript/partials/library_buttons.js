@@ -15,3 +15,7 @@ queueButton.addEventListener('click', e => {
     watchedButton.classList.remove('SelectedButton');
   }
 });
+const backToHomeButton = document.querySelector('.LogoWraper');
+backToHomeButton.addEventListener('click', () => {
+  window.location.href = 'index.html';
+});
