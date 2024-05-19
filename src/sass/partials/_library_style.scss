@@ -12,12 +12,13 @@ body {
 }
 
 .MainHeader {
-  background: linear-gradient(#0000008f, #0000008f), url('../images/header_background.jpg');
+  background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_mobile.jpg');
   background-repeat: no-repeat;
-  background-size: 400%;
-  background-position-x: 10%;
-  background-position-y: 34%;
+  background-size: cover;
   height: 230px;
+  @media screen and (min-width: 320px) {
+    background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_tablet.jpg');
+  }
 }
 
 .Navigation {
@@ -123,10 +124,8 @@ body {
   background-color: aliceblue;
 }
 
-@media screen and (min-width: 425px) {
+@media screen and (min-width: 400px) {
   .MainHeader {
-    background-position: 0% 29%;
-    background-size: 142%;
     height: 219px;
   }
   .Navigation {
@@ -157,9 +156,9 @@ body {
 }
 @media screen and (min-width: 769px) {
   .MainHeader {
-    background-position: 0 35%;
-    background-position: 0% 29%;
-    background-size: 100%;
+    background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_desktop.jpg');
+    height: 216px;
+    background-position: bottom;
   }
   .ButtonsWrapper {
     gap: 16px;

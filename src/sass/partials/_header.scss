@@ -139,6 +139,7 @@ body {
 @media screen and (min-width: 591px) {
   .SectionHeader {
     background-image: url('../images/tablet.jpg');
+    background-repeat: round;
     height: 219px;
   }
   .Nav {
