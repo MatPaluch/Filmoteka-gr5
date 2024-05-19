@@ -110,11 +110,11 @@ buttons.addEventListener('click', event => {
   if(event.target === element0){
     if(element1.textContent !== "1"){
       values.map((element)=>{
-        if(element.textContent === ""){
-          element.textContent = "";
+        if(parseInt(element.textContent)){
+          element.textContent = parseInt(element.textContent) - 1;
         }
         else{
-          element.textContent = parseInt(element.textContent) - 1;
+          return;
         }
       })
     }
@@ -127,22 +127,22 @@ buttons.addEventListener('click', event => {
       return;
       }
       else if(element1.textContent === "2"){
-        if(element.textContent === ""){
-          element.textContent = "";
-        }
-        else{
+        if(parseInt(element.textContent)){
           values.map((element)=>{
             element.textContent = parseInt(element.textContent) - 1;
           }) 
         }
+        else{
+          return;
+        }
       }
         else{
           values.map((element)=>{
-            if(element.textContent === ""){
-              element.textContent = "";
+            if(parseInt(element.textContent)){
+              element.textContent = parseInt(element.textContent) - 2;
             }
             else{
-              element.textContent = parseInt(element.textContent) - 2;
+              return;
             }
             
           })
@@ -156,11 +156,11 @@ buttons.addEventListener('click', event => {
     }
     else{
       values.map((element)=>{
-        if(element.textContent === ""){
-          element.textContent = "";
+        if(parseInt(element.textContent)){
+          element.textContent = parseInt(element.textContent) - 1;
         }
         else{
-          element.textContent = parseInt(element.textContent) - 1;
+          return;
         }
       }) 
     }
@@ -174,11 +174,11 @@ buttons.addEventListener('click', event => {
   else if(event.target === element4){
     fetchMove(parseInt(event.target.textContent)); 
       values.map((element)=>{
-        if(element.textContent === ""){
-          element.textContent = "";
+        if(parseInt(element.textContent)){
+          element.textContent = parseInt(element.textContent) + 1;
         }
         else{
-          element.textContent = parseInt(element.textContent) + 1;
+          return;
         }
       }) 
     
@@ -197,11 +197,11 @@ buttons.addEventListener('click', event => {
     }
     else{
       values.map((element)=>{
-        if(element.textContent === ""){
-          element.textContent = "";
+        if(parseInt(element.textContent)){
+          element.textContent = parseInt(element.textContent) + 2;
         }
         else{
-          element.textContent = parseInt(element.textContent) + 2;
+          return;
         }
       }) 
     }
@@ -210,11 +210,11 @@ buttons.addEventListener('click', event => {
   else if(event.target === element6){
     if(element5.textContent !== "20"){
       values.map((element)=>{
-        if(element.textContent === ""){
-          element.textContent = "";
+        if(parseInt(element.textContent)){
+          element.textContent = parseInt(element.textContent) + 1;
         }
         else{
-          element.textContent = parseInt(element.textContent) + 1;
+          return;
         }
       }) 
     }
@@ -231,6 +231,9 @@ buttons.addEventListener('click', event => {
     element4.textContent = "19";
     element5.textContent = "20";
   }
+  
+
+  
   elementVoid1.textContent = "1";
   elementVoid20.textContent = "20";
 });
