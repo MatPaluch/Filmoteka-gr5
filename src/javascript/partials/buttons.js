@@ -253,8 +253,6 @@ buttons.addEventListener('click', event => {
     element5.textContent = "20";
   }
   
-
-  
   elementVoid1.textContent = "1";
   elementVoid20.textContent = "20";
 });
