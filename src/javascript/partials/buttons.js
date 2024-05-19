@@ -94,13 +94,17 @@ fetchMove();
 
 buttons.addEventListener('click', event => {
   const values = Array.from(buttons.children);
+ 
   const element0 = values[0];
-  const element1 = values[1];
-  const element2 = values[2];
-  const element3 = values[3];
-  const element4 = values[4];
-  const element5 = values[5];
-  const element6 = values[6];
+  const element1 = values[2];
+  const element2 = values[3];
+  const element3 = values[4];
+  const element4 = values[5];
+  const element5 = values[6];
+  const element6 = values[8];
+  const elementVoid1 = values[1];
+  const elementVoid20 = values[7];
+
   container.innerHTML = '';
 //Przycisk <-
   if(event.target === element0){
@@ -216,4 +220,17 @@ buttons.addEventListener('click', event => {
     }
     fetchMove(globalNumber+1); 
   }
+  else if(event.target === elementVoid1){
+    fetchMove(1);
+  }
+  else if(event.target === elementVoid20){
+    fetchMove(20);
+    element1.textContent = "16";
+    element2.textContent = "17";
+    element3.textContent = "18";
+    element4.textContent = "19";
+    element5.textContent = "20";
+  }
+  elementVoid1.textContent = "1";
+  elementVoid20.textContent = "20";
 });
