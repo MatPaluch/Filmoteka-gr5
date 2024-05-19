@@ -13,11 +13,14 @@ body {
 
 .MainHeader {
   background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_mobile.jpg');
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 230px;
-  @media screen and (min-width: 320px) {
-    background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_tablet.jpg');
+}
+
+@media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .SectionHeader {
+    background-image: url('../images/library_mobile@2x.jpg');
   }
 }
 
@@ -126,7 +129,14 @@ body {
 
 @media screen and (min-width: 400px) {
   .MainHeader {
+    background-repeat: no-repeat;
+    background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_tablet.jpg');
     height: 219px;
+  }
+  @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+    .SectionHeader {
+      background-image: url('../images/library_tablet@2x.jpg');
+    }
   }
   .Navigation {
     padding: 40px 32px;

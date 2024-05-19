@@ -17,7 +17,7 @@ body {
 
 .SectionHeader {
   background-image: url('../images/mobile.jpg');
-  background-repeat: no-repeat;
+  background-repeat: round;
   background-size: cover;
   height: 230px;
   position: fixed;
@@ -26,6 +26,11 @@ body {
   width: 100%;
   background-color: white;
   z-index: 1000;
+}
+@media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+  .SectionHeader {
+    background-image: url('../images/mobile@2x.jpg');
+  }
 }
 
 .Nav {
@@ -137,9 +142,13 @@ body {
   color: transparent;
 }
 @media screen and (min-width: 591px) {
+  @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
+    .SectionHeader {
+      background-image: url('../images/tablet@2x.jpg');
+    }
+  }
   .SectionHeader {
     background-image: url('../images/tablet.jpg');
-    background-repeat: round;
     height: 219px;
   }
   .Nav {
