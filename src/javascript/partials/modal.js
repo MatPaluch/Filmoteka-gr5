@@ -1,5 +1,3 @@
-// modal.js
-
 function createModalTemplate() {
   const existingModal = document.querySelector('.modal');
   if (existingModal) {
