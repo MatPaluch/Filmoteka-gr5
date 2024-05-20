@@ -1,5 +1,3 @@
-// modal.js
-
 function createModalTemplate() {
   const existingModal = document.querySelector('.modal');
   if (existingModal) {
@@ -38,7 +36,6 @@ function showNotification(message) {
   notification.classList.add('notification');
   notification.textContent = message;
   document.body.appendChild(notification);
-
   setTimeout(() => {
     notification.classList.add('visible');
   }, 10);
