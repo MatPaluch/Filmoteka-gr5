@@ -52,12 +52,11 @@ function changeValue(array) {
 
 async function fetchMove(number = 1) {
   globalNumber = number;
-  console.log(globalNumber);
   try {
     array = [];
-    let response = await axios.get(`${url}&page=${number}`);
+    const response = await axios.get(`${url}&page=${number}`);
     response.data['results'].forEach(element => {
-      let obj = {};
+      const obj = {};
       obj.key = element['title'];
       obj.value = [
         basicImage + element['poster_path'],
@@ -114,7 +113,8 @@ async function fetchMove(number = 1) {
     console.error('Wystąpił błąd:', error);
   }
 }
-fetchMove();
+setTimeout(fetchMove,1000);
+
 
 buttons.addEventListener('click', event => {
   const values = Array.from(buttons.children);
@@ -146,9 +146,7 @@ buttons.addEventListener('click', event => {
           }
 
         }
-        else{
-          return;
-        }
+      
       })
     }
     if(globalNumber < 6){
@@ -157,21 +155,19 @@ buttons.addEventListener('click', event => {
       values[globalNumber-1].classList.remove("page-button");
       values[globalNumber-1].classList.add("current-page");
     }
-    fetchMove(globalNumber - 1); 
+    
+        fetchMove(globalNumber-1);
+       
   }
   //przycisk ->
   else if(event.target === element6){
-    if(element5.textContent !== "20" && globalNumber>5){
+    if(element5.textContent !== "20" && globalNumber>=5){
       values.map((element)=>{
         if(parseInt(element.textContent)){
           element.textContent = parseInt(element.textContent) + 1;
         }
-        else{
-          return;
-        }
       }) 
       changeValueButton(element1);
-      
     }
     if(globalNumber < 5){
       values[globalNumber].classList.remove("current-page");
@@ -182,19 +178,22 @@ buttons.addEventListener('click', event => {
     if(globalNumber === 17){
       values[8].textContent = "19";
     }
-    fetchMove(globalNumber+1); 
+        fetchMove(globalNumber+1);
+        
+    
+    
   }
-  else if(event.target === elementVoid1){
-    fetchMove(1);
-  }
-  else if(event.target === elementVoid20){
-    fetchMove(20);
-    element1.textContent = "16";
-    element2.textContent = "17";
-    element3.textContent = "18";
-    element4.textContent = "19";
-    element5.textContent = "20";
-  }
+  // else if(event.target === elementVoid1){
+  //   fetchMove(1);
+  // }
+  // else if(event.target === elementVoid20){
+  //   fetchMove(20);
+  //   element1.textContent = "16";
+  //   element2.textContent = "17";
+  //   element3.textContent = "18";
+  //   element4.textContent = "19";
+  //   element5.textContent = "20";
+  // }
   
   elementVoid1.textContent = "1";
   elementVoid20.textContent = "20";
@@ -202,3 +201,4 @@ buttons.addEventListener('click', event => {
 function changeValueButton(value){
   value.innerHTML = '<svg width="11" height="16" viewBox="0 0 11 16"><circle cx="2" cy="8" r="1" fill="black" /><circle cx="5.5" cy="8" r="1" fill="black" /><circle cx="9" cy="8" r="1" fill="black" /></svg>';
 } 
+
