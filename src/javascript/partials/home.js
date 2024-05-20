@@ -1,9 +1,6 @@
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
-const backToHomeButton = document.querySelector('.LogoWrapper');
-backToHomeButton.addEventListener('click', () => {
-  window.location.href = 'index.html';
-});
+
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=b942b8bf626a04f48b07153a95ee51a0';
@@ -69,10 +66,11 @@ async function fetchMove() {
     });
     return array;
   } catch (error) {
-    console.error('Wystąpił błąd:', error);
+    console.error('Error:', error);
     return [];
   }
 }
+
 fetchMove().then(result => {
   console.log(result);
   result.forEach(element => {
