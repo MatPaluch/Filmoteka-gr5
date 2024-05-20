@@ -1,3 +1,5 @@
+import { createModalTemplate, openModal } from './modal.js';
+import { showLoader, hideLoader } from './loader.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   const watchedButton = document.querySelector('[data-watched]');
@@ -25,6 +27,26 @@ document.addEventListener('DOMContentLoaded', () => {
       card.appendChild(genre);
       card.appendChild(year);
       container.appendChild(card);
+
+      card.addEventListener('click', () => {
+        showLoader();
+        const selectedMovie = {
+          title: movie.title,
+          image: movie.image,
+          genre: movie.genre,
+          year: movie.year,
+          originalTitle: movie.originalTitle,
+          overview: movie.overview,
+          popularity: movie.popularity,
+          voteAverage: movie.voteAverage,
+          voteCount: movie.voteCount,
+        };
+        setTimeout(() => {
+          createModalTemplate();
+          openModal(selectedMovie);
+          hideLoader();
+        }, 500);
+      });
     });
   }
 
