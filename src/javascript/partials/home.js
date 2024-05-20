@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
+
 const backToHomeButton = document.querySelector('.LogoWrapper');
 backToHomeButton.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
+
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=b942b8bf626a04f48b07153a95ee51a0';
@@ -48,34 +50,35 @@ function changeValue(array) {
   return response;
 }
 
-async function fetchMove() {
+async function fetchMovies() {
   try {
     const response = await axios.get(url);
-    response.data['results'].forEach(element => {
+    response.data.results.forEach(element => {
       const obj = {};
-      obj.key = element['title'];
+      obj.key = element.title;
       obj.value = [
-        basicImage + element['poster_path'],
-        element['release_date'].substring(0, 4),
-        changeValue(element['genre_ids']),
-        element['original_title'],
-        element['overview'],
-        element['popularity'],
-        element['vote_average'],
-        element['vote_count'],
+        basicImage + element.poster_path,
+        element.release_date.substring(0, 4),
+        changeValue(element.genre_ids),
+        element.original_title,
+        element.overview,
+        element.popularity,
+        element.vote_average,
+        element.vote_count,
       ];
 
       array.push(obj);
     });
-    return array;
+    displayMovies(array);
   } catch (error) {
     console.error('Wystąpił błąd:', error);
-    return [];
   }
 }
-fetchMove().then(result => {
-  console.log(result);
-  result.forEach(element => {
+
+function displayMovies(movies) {
+  const container = document.getElementById('movie-container');
+  container.innerHTML = '';
+  movies.forEach(element => {
     const card = document.createElement('div');
     card.classList.add('card');
     const details = document.createElement('div');
@@ -114,4 +117,8 @@ fetchMove().then(result => {
       openModal(selectedMovie);
     });
   });
-});
+}
+
+fetchMovies();
+
+export { array, fetchMovies, displayMovies };
