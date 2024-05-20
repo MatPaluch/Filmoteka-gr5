@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createModalTemplate, openModal, closeModal } from './modal.js';
+import { displayMovies } from './search.js';
  
 
 const container = document.getElementById('movie-container');
