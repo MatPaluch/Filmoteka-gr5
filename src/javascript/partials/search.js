@@ -1,5 +1,6 @@
 import { array } from './home.js';
 import { createModalTemplate, openModal } from './modal.js';
+import { showLoader, hideLoader } from './loader.js';
 
 function filterMovies() {
   const searchInput = document.getElementById('search-input').value.toLowerCase();
@@ -48,6 +49,8 @@ function displayMovies(movies) {
     container.appendChild(card);
 
     card.addEventListener('click', () => {
+      showLoader();
+
       const selectedMovie = {
         title: movie.key,
         image: movie.value[0],
@@ -59,8 +62,11 @@ function displayMovies(movies) {
         voteAverage: movie.value[6],
         voteCount: movie.value[7],
       };
-      createModalTemplate();
-      openModal(selectedMovie);
+      setTimeout(() => {
+        createModalTemplate();
+        openModal(selectedMovie);
+        hideLoader();
+      }, 500);
     });
   });
 }
