@@ -1,12 +1,14 @@
 import axios from 'axios';
-import { createModalTemplate, openModal } from './modal.js';
+import { createModalTemplate, openModal, closeModal } from './modal.js';
+ 
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
-const url = 'https://api.themoviedb.org/3/discover/movie?api_key=b942b8bf626a04f48b07153a95ee51a0';
+const url = 'https://api.themoviedb.org/3/movie/popular?api_key=b942b8bf626a04f48b07153a95ee51a0';
 let array = [];
 let globalNumber = 1;
 const buttons = document.querySelector('.buttons');
+changeValueButton(Array.from(buttons.children)[8]);
 
 const arrayMoves = [
   { 28: 'Action' },
@@ -115,63 +117,88 @@ fetchMove();
 
 buttons.addEventListener('click', event => {
   const values = Array.from(buttons.children);
-  const target = event.target.textContent;
-  const number = parseInt(target);
-  const firstChild = buttons.firstElementChild;
-  const lastChild = buttons.lastElementChild;
-  console.log(values[0]);
+ 
+  const element0 = values[0];
+  const element1 = values[2];
+  const element2 = values[3];
+  const element3 = values[4];
+  const element4 = values[5];
+  const element5 = values[6];
+  const element6 = values[10];
+  const element7 = values[7];
+  const elementVoid1 = values[1];
+  const elementVoid20 = values[9];
+
+
   container.innerHTML = '';
+//Przycisk <-
+  if(event.target === element0){
+    if(values[5].textContent === "6"){
+      buttons.children[2].innerHTML = "";
+      buttons.children[2].textContent = "3";
+    }
+    if(element1.textContent !== "1"){
+      values.map((element)=>{
+        if(parseInt(element.textContent)){
+          if(globalNumber >6){
+            element.textContent = parseInt(element.textContent) - 1;
+          }
 
-  if (event.target === firstChild) {
-    const choosedNumber = parseInt(localStorage.getItem('globalNumber')) - 1;
-    localStorage.setItem('globalNumber', choosedNumber);
-    fetchMove(choosedNumber);
-  } else if (event.target === lastChild) {
-    const choosedNumber = parseInt(localStorage.getItem('globalNumber')) + 1;
-    localStorage.setItem('globalNumber', choosedNumber);
-    fetchMove(choosedNumber);
-  } else {
-    localStorage.setItem('globalNumber', number);
-    fetchMove(number);
+        }
+        else{
+          return;
+        }
+      })
+    }
+    if(globalNumber < 6){
+      values[globalNumber].classList.remove("current-page");
+      values[globalNumber].classList.add("page-button");
+      values[globalNumber-1].classList.remove("page-button");
+      values[globalNumber-1].classList.add("current-page");
+    }
+    fetchMove(globalNumber - 1); 
   }
-
-  if (event.target === values[0] || event.target === values[2]) {
-    if (event.target.textContent !== '2') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
-          element.textContent = parseInt(element.textContent);
-        }
-      });
-    }
-  } else if (event.target === values[1]) {
-    if (event.target.textContent !== '1' || event.target.textContent !== '2') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
-          element.textContent = parseInt(element.textContent) - 2;
-        }
-      });
-    }
-  } else if (event.target === values[4] || event.target === values[6]) {
-    if (event.target.textContent !== '19') {
-      values.forEach(element => {
-        if (element === values[0] || element === values[6]) {
-        } else {
+  //przycisk ->
+  else if(event.target === element6){
+    if(element5.textContent !== "20" && globalNumber>5){
+      values.map((element)=>{
+        if(parseInt(element.textContent)){
           element.textContent = parseInt(element.textContent) + 1;
         }
-      });
+        else{
+          return;
+        }
+      }) 
+      changeValueButton(element1);
+      
     }
-  } else {
-    if (event.target.textContent !== '4') {
-      if (event.target.textContent !== '20') {
-        values.forEach(element => {
-          if (element === values[0] || element === values[6]) {
-          } else {
-            element.textContent = parseInt(element.textContent) + 2;
-          }
-        });
-      }
+    if(globalNumber < 5){
+      values[globalNumber].classList.remove("current-page");
+        values[globalNumber].classList.add("page-button");
+        values[globalNumber+1].classList.remove("page-button");
+        values[globalNumber+1].classList.add("current-page");
     }
+    if(globalNumber === 17){
+      values[8].textContent = "19";
+    }
+    fetchMove(globalNumber+1); 
   }
+  else if(event.target === elementVoid1){
+    fetchMove(1);
+  }
+  else if(event.target === elementVoid20){
+    fetchMove(20);
+    element1.textContent = "16";
+    element2.textContent = "17";
+    element3.textContent = "18";
+    element4.textContent = "19";
+    element5.textContent = "20";
+  }
+  
+  elementVoid1.textContent = "1";
+  elementVoid20.textContent = "20";
 });
+
+function changeValueButton(value){
+  value.innerHTML = '<svg width="11" height="16" viewBox="0 0 11 16"><circle cx="2" cy="8" r="1" fill="black" /><circle cx="5.5" cy="8" r="1" fill="black" /><circle cx="9" cy="8" r="1" fill="black" /></svg>';
+} 
