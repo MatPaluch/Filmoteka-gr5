@@ -24,7 +24,7 @@
   animation: l14 1s infinite linear;
 }
 .loader::after {
-  border-color: #0000 #0000 blue blue;
+  border-color: #0000 #0000 #ff6b08 #ff6b08;
   animation-direction: reverse;
 }
 @keyframes l14 {
