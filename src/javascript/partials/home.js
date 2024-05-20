@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
+
 import { showLoader, hideLoader } from './loader.js';
 
 import { filterMovies } from './search.js';
@@ -8,6 +9,7 @@ const backToHomeButton = document.querySelector('.LogoWrapper');
 backToHomeButton.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
+
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
@@ -75,12 +77,13 @@ async function fetchMove() {
     });
     return array;
   } catch (error) {
-    console.error('Wystąpił błąd:', error);
+    console.error('Error:', error);
     return [];
   } finally {
     setTimeout(hideLoader, 500);
   }
 }
+
 fetchMove().then(result => {
   console.log(result);
   result.forEach(element => {
