@@ -181,7 +181,6 @@ buttons.addEventListener('click', event => {
         fetchMove(globalNumber+1);
         
     
-    
   }
   // else if(event.target === elementVoid1){
   //   fetchMove(1);
