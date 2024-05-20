@@ -84,52 +84,52 @@ async function fetchMove() {
   }
 }
 
-fetchMove().then(result => {
-  console.log(result);
-  result.forEach(element => {
-    const card = document.createElement('div');
-    card.classList.add('card');
-    const details = document.createElement('div');
-    details.classList.add('details');
-    const img = document.createElement('img');
-    const title = document.createElement('h1');
-    const genre = document.createElement('p');
-    const year = document.createElement('p');
+// fetchMove().then(result => {
+//   console.log(result);
+//   result.forEach(element => {
+//     const card = document.createElement('div');
+//     card.classList.add('card');
+//     const details = document.createElement('div');
+//     details.classList.add('details');
+//     const img = document.createElement('img');
+//     const title = document.createElement('h1');
+//     const genre = document.createElement('p');
+//     const year = document.createElement('p');
 
-    img.src = Object.values(element)[1][0];
-    title.textContent = element.key;
-    genre.textContent = Object.values(element)[1][2].slice(0, 3).join(', ');
-    year.textContent = Object.values(element)[1][1];
+//     img.src = Object.values(element)[1][0];
+//     title.textContent = element.key;
+//     genre.textContent = Object.values(element)[1][2].slice(0, 3).join(', ');
+//     year.textContent = Object.values(element)[1][1];
 
-    card.appendChild(img);
-    card.appendChild(title);
-    details.appendChild(genre);
-    details.appendChild(year);
-    card.appendChild(details);
+//     card.appendChild(img);
+//     card.appendChild(title);
+//     details.appendChild(genre);
+//     details.appendChild(year);
+//     card.appendChild(details);
 
-    container.appendChild(card);
-    filterMovies();
+//     container.appendChild(card);
+//     filterMovies();
 
-    card.addEventListener('click', () => {
-      showLoader();
-      const selectedMovie = {
-        title: element.key,
-        image: Object.values(element)[1][0],
-        genre: Object.values(element)[1][2].join(', '),
-        year: Object.values(element)[1][1],
-        originalTitle: Object.values(element)[1][3],
-        overview: Object.values(element)[1][4],
-        popularity: Object.values(element)[1][5],
-        voteAverage: Object.values(element)[1][6],
-        voteCount: Object.values(element)[1][7],
-      };
-      setTimeout(() => {
-        createModalTemplate();
-        openModal(selectedMovie);
-        hideLoader();
-      }, 500);
-    });
-  });
-});
+//     card.addEventListener('click', () => {
+//       showLoader();
+//       const selectedMovie = {
+//         title: element.key,
+//         image: Object.values(element)[1][0],
+//         genre: Object.values(element)[1][2].join(', '),
+//         year: Object.values(element)[1][1],
+//         originalTitle: Object.values(element)[1][3],
+//         overview: Object.values(element)[1][4],
+//         popularity: Object.values(element)[1][5],
+//         voteAverage: Object.values(element)[1][6],
+//         voteCount: Object.values(element)[1][7],
+//       };
+//       setTimeout(() => {
+//         createModalTemplate();
+//         openModal(selectedMovie);
+//         hideLoader();
+//       }, 500);
+//     });
+//   });
+// });
 
 export { array };
