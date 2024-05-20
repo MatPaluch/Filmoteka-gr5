@@ -38,51 +38,51 @@ const arrayMoves = [
   { 37: 'Western' },
 ];
 
-function changeValue(array) {
-  const keys = [];
-  const values = [];
-  const response = [];
+// function changeValue(array) {
+//   const keys = [];
+//   const values = [];
+//   const response = [];
 
-  arrayMoves.map(element => {
-    keys.push(Object.keys(element)[0]);
-    values.push(Object.values(element)[0]);
-  });
+//   arrayMoves.map(element => {
+//     keys.push(Object.keys(element)[0]);
+//     values.push(Object.values(element)[0]);
+//   });
 
-  array.map(element => {
-    const value = keys.indexOf(element.toString());
-    response.push(values[value]);
-  });
-  return response;
-}
+//   array.map(element => {
+//     const value = keys.indexOf(element.toString());
+//     response.push(values[value]);
+//   });
+//   return response;
+// }
 
-async function fetchMove() {
-  showLoader();
-  try {
-    const response = await axios.get(url);
-    response.data['results'].forEach(element => {
-      const obj = {};
-      obj.key = element['title'];
-      obj.value = [
-        basicImage + element['poster_path'],
-        element['release_date'].substring(0, 4),
-        changeValue(element['genre_ids']),
-        element['original_title'],
-        element['overview'],
-        element['popularity'],
-        element['vote_average'],
-        element['vote_count'],
-      ];
+// async function fetchMove() {
+//   showLoader();
+//   try {
+//     const response = await axios.get(url);
+//     response.data['results'].forEach(element => {
+//       const obj = {};
+//       obj.key = element['title'];
+//       obj.value = [
+//         basicImage + element['poster_path'],
+//         element['release_date'].substring(0, 4),
+//         changeValue(element['genre_ids']),
+//         element['original_title'],
+//         element['overview'],
+//         element['popularity'],
+//         element['vote_average'],
+//         element['vote_count'],
+//       ];
 
-      array.push(obj);
-    });
-    return array;
-  } catch (error) {
-    console.error('Error:', error);
-    return [];
-  } finally {
-    setTimeout(hideLoader, 500);
-  }
-}
+//       array.push(obj);
+//     });
+//     return array;
+//   } catch (error) {
+//     console.error('Error:', error);
+//     return [];
+//   } finally {
+//     setTimeout(hideLoader, 500);
+//   }
+// }
 
 // fetchMove().then(result => {
 //   console.log(result);
