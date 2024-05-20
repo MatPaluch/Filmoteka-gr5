@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
+import { showLoader, hideLoader } from './loader.js';
+
 import { filterMovies } from './search.js';
 
 const backToHomeButton = document.querySelector('.LogoWrapper');
@@ -52,6 +54,7 @@ function changeValue(array) {
 }
 
 async function fetchMove() {
+  showLoader();
   try {
     const response = await axios.get(url);
     response.data['results'].forEach(element => {
@@ -74,6 +77,8 @@ async function fetchMove() {
   } catch (error) {
     console.error('Wystąpił błąd:', error);
     return [];
+  } finally {
+    setTimeout(hideLoader, 500);
   }
 }
 fetchMove().then(result => {
@@ -103,6 +108,7 @@ fetchMove().then(result => {
     filterMovies();
 
     card.addEventListener('click', () => {
+      showLoader();
       const selectedMovie = {
         title: element.key,
         image: Object.values(element)[1][0],
@@ -114,8 +120,11 @@ fetchMove().then(result => {
         voteAverage: Object.values(element)[1][6],
         voteCount: Object.values(element)[1][7],
       };
-      createModalTemplate();
-      openModal(selectedMovie);
+      setTimeout(() => {
+        createModalTemplate();
+        openModal(selectedMovie);
+        hideLoader();
+      }, 500);
     });
   });
 });
