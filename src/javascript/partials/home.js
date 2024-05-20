@@ -1,9 +1,12 @@
 import axios from 'axios';
 import { createModalTemplate, openModal } from './modal.js';
+import { filterMovies } from './search.js';
+
 const backToHomeButton = document.querySelector('.LogoWrapper');
 backToHomeButton.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
+
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
 const url = 'https://api.themoviedb.org/3/discover/movie?api_key=b942b8bf626a04f48b07153a95ee51a0';
@@ -97,6 +100,7 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
+    filterMovies();
 
     card.addEventListener('click', () => {
       const selectedMovie = {
@@ -115,3 +119,5 @@ fetchMove().then(result => {
     });
   });
 });
+
+export { array };
