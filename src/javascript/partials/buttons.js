@@ -198,6 +198,7 @@ buttons.addEventListener('click', event => {
   elementVoid1.textContent = "1";
   elementVoid20.textContent = "20";
 });
+
 function changeValueButton(value){
   value.innerHTML = '<svg width="11" height="16" viewBox="0 0 11 16"><circle cx="2" cy="8" r="1" fill="black" /><circle cx="5.5" cy="8" r="1" fill="black" /><circle cx="9" cy="8" r="1" fill="black" /></svg>';
 } 
