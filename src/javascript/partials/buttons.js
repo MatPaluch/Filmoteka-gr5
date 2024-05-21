@@ -53,7 +53,6 @@ function changeValue(array) {
 
 async function fetchMove(number = 1) {
   globalNumber = number;
-  console.log(globalNumber);
   try {
     array = [];
     let response = await axios.get(`${url}&page=${number}`);

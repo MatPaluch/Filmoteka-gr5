@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', () => {
       headerMessage.innerHTML = '';
 
       const searchData = await searchMovies(query);
-      console.log(searchData);
 
       if (searchData.results.length === 0) {
         const notFoundMessage = document.createElement('p');
@@ -76,7 +75,6 @@ document.addEventListener('DOMContentLoaded', () => {
             card.appendChild(details);
 
             card.addEventListener('click', () => {
-              console.log(movie);
               showLoader();
 
               const selectedMovie = {
