@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createModalTemplate, openModal, closeModal } from './modal.js';
-// import { displayMovies } from './search.js';
+import { showLoader, hideLoader } from './loader.js';
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
@@ -94,6 +94,7 @@ async function fetchMove(number = 1) {
 
       container.appendChild(card);
       card.addEventListener('click', () => {
+        showLoader();
         const selectedMovie = {
           title: element.key,
           image: Object.values(element)[1][0],
@@ -105,8 +106,11 @@ async function fetchMove(number = 1) {
           voteAverage: Object.values(element)[1][6],
           voteCount: Object.values(element)[1][7],
         };
-        createModalTemplate();
-        openModal(selectedMovie);
+        setTimeout(() => {
+          createModalTemplate();
+          openModal(selectedMovie);
+          hideLoader();
+        }, 500);
       });
     });
   } catch (error) {

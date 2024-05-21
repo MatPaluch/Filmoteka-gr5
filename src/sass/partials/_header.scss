@@ -91,15 +91,18 @@ body {
   height: 3px;
 }
 .headerMessage {
-  display: flex;
   align-items: center;
   width: 280px;
-  height: 20px;
+  height: 40px;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  display: flex;
   position: relative;
-  margin: 0 auto;
 }
 .not-found-message {
   color: var(--RED);
+  font-size: 14px;
+  font-weight: 400;
 }
 .SearchForm {
   display: flex;
@@ -107,10 +110,26 @@ body {
   width: 280px;
   height: 20px;
   position: relative;
-  margin: 0 auto;
+  left: 50%;
+  transform: translate(-50%, 50%);
   border-bottom: solid 1px #fff;
 }
-
+@media screen and (min-width: 767px) {
+  .SearchForm {
+    width: 336px;
+  }
+  .headerMessage {
+    width: 336px;
+  }
+}
+@media screen and (min-width: 1279px) {
+  .SearchForm {
+    width: 394px;
+  }
+  .headerMessage {
+    width: 394px;
+  }
+}
 .SearchInput {
   flex-grow: 1;
   height: 100%;
