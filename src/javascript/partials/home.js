@@ -3,13 +3,12 @@ import { createModalTemplate, openModal } from './modal.js';
 
 import { showLoader, hideLoader } from './loader.js';
 
-import { filterMovies } from './search.js';
+// import { filterMovies } from './search.js';
 
 const backToHomeButton = document.querySelector('.LogoWrapper');
 backToHomeButton.addEventListener('click', () => {
   window.location.href = 'index.html';
 });
-
 
 const container = document.getElementById('movie-container');
 const basicImage = 'https://image.tmdb.org/t/p/w500';
@@ -132,4 +131,4 @@ fetchMove().then(result => {
   });
 });
 
-export { array };
+export { array, changeValue, arrayMoves };
