@@ -111,7 +111,12 @@ function openModal(selectedMovie) {
   aboutSectionTextHead.innerHTML = `About`;
   const aboutSectionText = document.createElement('p');
   aboutSectionText.classList.add('modal-overview-text');
-  aboutSectionText.innerHTML = selectedMovie.overview;
+
+  if (selectedMovie.overview.trim() !== '') {
+    aboutSectionText.innerHTML = selectedMovie.overview;
+  } else {
+    aboutSectionText.innerHTML = 'No information available about this movie.';
+  }
 
   aboutSection.appendChild(aboutSectionTextHead);
   aboutSection.appendChild(aboutSectionText);

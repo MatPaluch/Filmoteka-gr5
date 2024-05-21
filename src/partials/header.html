@@ -12,12 +12,18 @@
     </ul>
   </nav>
   <form class="SearchForm">
-    <input type="text" class="SearchInput" id="search-input" placeholder="Movie search" />
+    <input
+      type="text"
+      class="SearchInput"
+      id="search-input"
+      placeholder="Movie search"
+      autocomplete="off"
+    />
     <button type="submit" class="SearchButton">
       <svg class="SearchIcon" width="12" height="12">
         <use href="./images/icon.svg#icon-search"></use>
       </svg>
     </button>
-    <div class="SearchBorder"></div>
   </form>
+  <div class="headerMessage" id="headerMessage"></div>
 </header>
