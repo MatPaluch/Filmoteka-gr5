@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { changeValue } from './home.js';
-import { createModalTemplate, openModal, closeModal } from './modal.js';
+import { createModalTemplate, openModal } from './modal.js';
 import { showLoader, hideLoader } from './loader.js';
 
 const options = {

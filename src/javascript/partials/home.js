@@ -3,8 +3,6 @@ import { createModalTemplate, openModal } from './modal.js';
 
 import { showLoader, hideLoader } from './loader.js';
 
-// import { filterMovies } from './search.js';
-
 const backToHomeButton = document.querySelector('.LogoWrapper');
 backToHomeButton.addEventListener('click', () => {
   window.location.href = 'index.html';
@@ -107,7 +105,6 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
-    // filterMovies();
 
     card.addEventListener('click', () => {
       showLoader();
