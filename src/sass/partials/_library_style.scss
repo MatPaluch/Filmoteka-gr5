@@ -3,24 +3,22 @@
   --RED: #ff001b;
   --ORANGE: #ff6b08;
   --WHITE: #fff;
+  --BLACK: #000;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 body {
   font-family: var(--FONT-FAMILY);
   font-weight: 500;
   font-size: 12px;
-  color: var(--WHITE);
 }
-
 .MainHeader {
   background-image: linear-gradient(#0000008f, #0000008f), url('../images/library_mobile.jpg');
   background-repeat: round;
   background-size: cover;
   height: 230px;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
 }
 @media only screen and (min-device-pixel-ratio: 2), only screen and (min-resolution: 192dpi) {
   .SectionHeader {
@@ -66,13 +64,10 @@ body {
 .Link::after {
   content: '';
   background-color: var(--RED);
-
   right: 0;
   bottom: -4px;
-
   height: 3px;
   width: 0;
-
   position: absolute;
   transition: width 300ms, left 300ms;
 }
@@ -80,7 +75,6 @@ body {
   width: 100%;
   left: 0;
 }
-
 .Current::after {
   content: '';
   background-color: var(--RED);
@@ -90,7 +84,6 @@ body {
   width: 100%;
   height: 3px;
 }
-
 .ButtonsWrapper {
   display: flex;
   justify-content: center;
@@ -121,16 +114,6 @@ body {
   background: var(--ORANGE);
   box-shadow: 0px 8px 43px 0px #ff6b0199;
 }
-
-.LibraryContener {
-  padding: 20px;
-}
-.DemoCard {
-  width: 280px;
-  height: 438px;
-  background-color: aliceblue;
-}
-
 @media screen and (min-width: 400px) {
   .MainHeader {
     background-repeat: no-repeat;
@@ -163,10 +146,6 @@ body {
   .Buttons {
     width: 152px;
   }
-  .footer {
-    padding-top: 30px;
-    padding-bottom: 28px;
-  }
 }
 @media screen and (min-width: 769px) {
   .MainHeader {
@@ -180,12 +159,5 @@ body {
   .Buttons {
     width: 147px;
     height: 42px;
-  }
-  .footer-text {
-    font-size: 16px;
-    line-height: 1.171;
-  }
-  .textfirst {
-    display: inline-block;
   }
 }

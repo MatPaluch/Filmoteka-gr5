@@ -1,17 +1,3 @@
-:root {
-  --FONT-FAMILY: 'Roboto', sans-serif;
-  --RED: #ff001b;
-  --ORANGE: #ff6b08;
-  --WHITE: #fff;
-  --BLACK: #000;
-}
-
-body {
-  font-family: var(--FONT-FAMILY);
-  font-weight: 500;
-  font-size: 12px;
-}
-
 .IndexContainer {
   display: flex;
   flex-wrap: wrap;
