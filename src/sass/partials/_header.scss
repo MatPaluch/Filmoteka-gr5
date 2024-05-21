@@ -90,25 +90,34 @@ body {
   width: 100%;
   height: 3px;
 }
-
+.headerMessage {
+  display: flex;
+  align-items: center;
+  width: 280px;
+  height: 20px;
+  position: relative;
+  margin: 0 auto;
+}
+.not-found-message {
+  color: var(--RED);
+}
 .SearchForm {
   display: flex;
   align-items: center;
   width: 280px;
   height: 20px;
-  color: var(--WHITE);
   position: relative;
   margin: 0 auto;
+  border-bottom: solid 1px #fff;
 }
 
 .SearchInput {
   flex-grow: 1;
   height: 100%;
-  border: none;
-  background-color: transparent;
   color: var(--WHITE);
-  outline: none;
+  background-color: transparent;
   font-size: 16px;
+  border: none;
 }
 
 .SearchButton {
@@ -125,16 +134,20 @@ body {
   margin-right: auto;
 }
 
-.SearchBorder {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: calc(100% - 0px);
-  height: 0.5px;
-  background-color: var(--WHITE);
+// .SearchBorder {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   width: calc(100% - 0px);
+//   height: 0.5px;
+//   background-color: var(--WHITE);
+// }
+input {
+  outline: none;
 }
 .SearchInput::placeholder {
   color: var(--WHITE);
+
   width: 96px;
   height: 16px;
 }

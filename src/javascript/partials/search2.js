@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   searchForm.addEventListener('submit', async event => {
     event.preventDefault();
+    showLoader();
 
     const query = searchInput.value;
     try {
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
               showLoader();
 
               const selectedMovie = {
-                title: title,
+                title: movie.title,
                 image: img.src,
                 genre: genre.textContent,
                 year: year.textContent,
@@ -100,8 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         });
       }
+      setTimeout(() => {
+        hideLoader();
+      }, 500);
     } catch (error) {
       console.error('Błąd wyszukiwania:', error);
+      hideLoader();
     }
   });
 });
