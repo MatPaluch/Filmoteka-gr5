@@ -107,7 +107,7 @@ fetchMove().then(result => {
     card.appendChild(details);
 
     container.appendChild(card);
-    filterMovies();
+    // filterMovies();
 
     card.addEventListener('click', () => {
       showLoader();
