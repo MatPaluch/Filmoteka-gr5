@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const queueButton = document.querySelector('[data-queue]');
   const watchedContainer = document.getElementById('watched-movies-container');
   const queueContainer = document.getElementById('queue-container');
+  const watchedSection = document.querySelector('.watched-movies-section');
+  const queueSection = document.querySelector('.queue-section');
 
   function renderMovies(movies, container) {
     container.innerHTML = '';
@@ -55,12 +57,42 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMovies(movies, container);
   }
 
+  function setActiveSection(section) {
+    localStorage.setItem('activeSection', section);
+  }
+
+  function getActiveSection() {
+    return localStorage.getItem('activeSection') || 'watched';
+  }
+
+  function initializeSections() {
+    const activeSection = getActiveSection();
+    if (activeSection === 'watched') {
+      watchedButton.classList.add('SelectedButton');
+      queueButton.classList.remove('SelectedButton');
+      watchedSection.classList.add('active');
+      queueSection.classList.remove('active');
+      displayMovies('watchedMovies', watchedContainer);
+      queueContainer.innerHTML = '';
+    } else {
+      queueButton.classList.add('SelectedButton');
+      watchedButton.classList.remove('SelectedButton');
+      queueSection.classList.add('active');
+      watchedSection.classList.remove('active');
+      displayMovies('queueMovies', queueContainer);
+      watchedContainer.innerHTML = '';
+    }
+  }
+
   watchedButton.addEventListener('click', e => {
     if (!watchedButton.classList.contains('SelectedButton')) {
       e.target.classList.add('SelectedButton');
       queueButton.classList.remove('SelectedButton');
+      watchedSection.classList.add('active');
+      queueSection.classList.remove('active');
       displayMovies('watchedMovies', watchedContainer);
       queueContainer.innerHTML = '';
+      setActiveSection('watched');
     }
   });
 
@@ -68,8 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!queueButton.classList.contains('SelectedButton')) {
       e.target.classList.add('SelectedButton');
       watchedButton.classList.remove('SelectedButton');
+      queueSection.classList.add('active');
+      watchedSection.classList.remove('active');
       displayMovies('queueMovies', queueContainer);
       watchedContainer.innerHTML = '';
+      setActiveSection('queue');
     }
   });
 
@@ -78,5 +113,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.location.href = 'index.html';
   });
 
-  displayMovies('watchedMovies', watchedContainer);
+  initializeSections();
 });
